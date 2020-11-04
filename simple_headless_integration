@@ -1,0 +1,313 @@
+<?php
+// Include Wordpress
+define('WP_USE_THEMES', false);
+require('./wp2cms/wp-blog-header.php');
+?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Townsville Holiday Apartments Rates</title>
+<meta name="keywords" content="Townsville Holiday Apartments, Marcol Place, Specials, Townsville, Hospital, Townsville Holiday, Townsville Apartments, Townsville city, Townsville Work Contracts, The Strand, Rock Pool, City Business Centre, James Cook University, Townsville Hospital, Castletown Shopping Centre, Townsville Airport">
+<meta name="description" content="Rates & Availability Value For Money Townsville Accommodation Marcol Place Holiday Apartments, Townsville">
+<meta name="location" content="Townsville Australia">
+<meta name="robots" content="index,follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+<link href="images/favicon.ico" rel="shortcut icon" />
+<link rel="alternate" href="http://www.marcolplace.com.au" hreflang="en-au" />
+<link rel="canonical" href="http://www.marcolplace.com.au"/>
+
+
+
+
+</head>
+<body id="top">
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+<link rel="stylesheet" type="text/css" href="stylesheets/responsive.css" />
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700italic,700,800,800italic,300italic,300" rel="stylesheet" type="text/css" />
+<!--[if lte IE 8]>
+	<link rel="stylesheet" type="text/css" href="stylesheets/ie8.css" />
+<![endif]-->
+        <script type="text/javascript" src="javascript/jquery-1.8.3.js"></script><script type="text/javascript" src="javascript/custom.js"></script>
+<script type="text/javascript" src="javascript/header.js"></script>
+
+
+
+
+<!-- Flexslider JavaScript Files -->
+<link rel="stylesheet" href="stylesheets/flexslider.css" type="text/css" media="screen" />
+<script type="text/javascript" src="javascript/jquery.flexslider.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#index-slider').flexslider({
+		animation: "fade",  
+		slideDirection: "",       
+		slideshowSpeed: 3500,      
+		animationDuration: 500,	       
+		pauseOnHover: true,		
+        smoothHeight: true,
+        flex-disabled: true
+	});	
+});
+</script>
+<!-- bxSlider Javascript file -->
+<link rel="stylesheet" type="text/css" href="stylesheets/bxslider.css" />
+<script src="javascript/jquery.bxslider.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){    
+	$('#testimonials').bxSlider({
+	  controls: true,
+	  auto: true,
+	  pager: true,
+	  adaptiveHeight: false,
+	  mode: 'fade'
+	});
+});
+</script>
+
+        <div id="wrapper">
+        <!-- START HEADER -->
+        <div id="header-wrapper">
+  <div class="header clear"> <div id="logo"><br><br><br>
+<a href="http://www.marcolplace.com.au/index.htm"><img alt="" src="images/logo.png" /></a>
+</div>
+<!--END LOGO-->
+    
+    <div id="primary-menu"><br>
+    <ul class="menu">
+    <li  > <span class=""></span><a href="http://www.marcolplace.com.au/index.htm">Home<span class="menu_description"></span></a></li>
+    
+    <li  > <span class=""></span><a href="#">Accommodation<span class="menu_description"></span></a>
+    <ul class="menu">
+    <li  > <span class=""></span><a href="townsville_holiday_apartments.htm">The Apartments<span class="menu_description"></span></a></li>
+    <li  > <span class=""></span><a href="marcol_place_holiday_apartments_townsville_gallery.htm">Gallery<span class="menu_description"></span></a></li>
+    <li  > <span class=""></span><a href="location_marcol_place.htm">Our Location<span class="menu_description"></span></a></li>
+    <li  > <span class=""></span><a href="reviews_marcol_place_townsville_apartments.htm">Guest Reviews<span class="menu_description"></span></a></li>
+    </ul>
+    </li>
+    
+    <li  > <span class=""></span><a href="#">Rates/Specials<span class="menu_description"></span></a>
+    <ul class="menu">
+    <li  > <span class=""></span><a href="marcol_place_apartments_rates.php">Rates & Availability<span class="menu_description"></span></a></li>
+    <li  > <span class=""></span><a href="townsville_holiday_apartments_specials.php">Latest Specials<span class="menu_description"></span></a></li>
+    </ul>
+    </li>
+            
+    <li  > <span class=""></span><a href="#">The Destination<span class="menu_description"></span></a>
+    <ul class="menu">
+    <li  > <span class=""></span><a href="townsville-queensland.htm">About Townsville<span class="menu_description"></span></a></li>
+    <li  > <span class=""></span><a href="townsville_tours_activities.htm">Tours & Activities<span class="menu_description"></span></a></li>
+    </ul>
+    </li>          
+       
+    <li  > <span class=""></span><a href="contact_marcol_place_townsville.htm">Contact Us<span class="menu_description"></span></a></li>
+    
+    <li  > <span class=""></span><a href="marcol_place_apartments_rates.php"><img alt="" src="images/availability.gif" /><span class="menu_description"></span></a></li>
+    
+	<li  > <span class=""></span><a href="tel:0747241102"><img alt="" src="images/phone.gif" /><span class="menu_description"></span></a></li>     
+    
+
+        
+    </ul>
+    </div>
+    
+
+
+<!--END PRIMARY MENU-->
+  </div>
+</div>
+        <!-- END HEADER -->
+        
+    
+    
+        <!-- START HOME -->
+        <div id="content-wrapper">
+        
+        <div class="fullwidth">
+        <div class="flexslider" id="index-slider">
+        <ul class="slides">
+            <li> <a href="#"><img alt="Rates Townsville Holiday Apartments Marcol Place" src="images/townsville-holiday-accommodation-marcol-place-apartments-rates.jpg" width="2000" height="700" /></a>
+            <div class="flex-caption dark light-font center">
+            <div>
+            <h1><span class="uppercase"><br><br>Rates & Availability<br>Marcol Place Holiday Apartments, Townsville<br /></span></h1>
+            
+            </div>
+            </div>
+            </li>
+        </ul>
+        </div>
+        </div>
+        
+        
+        
+        
+        <div class="page-header text-align-center">
+        
+        <div class="one">
+        
+        <h1 class="title uppercase">Value For Money Townsville Accommodation</h1>
+         		
+		
+        <h5 class="subtitle"><br>Rates & Availability For Marcol Place Holiday Apartments, Townsville</h5>
+        <br>
+        </div>
+       
+        
+       </div>
+        <!--END PAGE-HEADER-->
+        
+        
+        <div class="content">
+        <div class="section">
+        <div class="one text-align-center">
+        <h5><strong>2017 RATES – SAME RATES SINCE 2010!</strong></h5>
+		<h12>Stay before 30th June 2017, & take $10 OFF per night !</h12><br><br>  
+		<h5><strong>THIS PRICE IS FOR BOOKINGS FROM THIS WEB SITE ONLY<br>  
+		Minimum Stay is 3 nights.</strong></h5><br><br>
+		<a href="contact_marcol_place_townsville.htm"><img alt="" src="images/bookingenquires.gif" /></a>
+        
+        
+        </div>
+        
+
+<?php
+$catquery = new WP_Query( 'cat=3&posts_per_page=1' );
+while($catquery->have_posts()) : $catquery->the_post();
+	the_content();
+endwhile;
+?>
+
+       
+       <div>
+       <h4><strong>Availability Calendar:</strong></h4><br>
+       <a href="contact_marcol_place_townsville.htm"><img alt="" src="images/bookingenquires.gif" /></a><br>
+       
+        <img alt="" src="images/chart.gif" />    
+       
+       <link href="/scripts/index.php?controller=pjFront&action=pjActionLoadCss&cid=1" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="/scripts/index.php?controller=pjFront&action=pjActionLoad&cid=1&view=12&locale=1"></script>
+        
+      
+
+       </div>
+       
+       
+       
+      
+
+       
+        
+          
+        
+        </div>
+        <!--END SECTION-->
+        </div>
+        <!--END CONTENT-->
+        </div>
+        <!--END CONTENT-WRAPPER-->
+        <!-- END HOME -->    
+        
+        
+        
+
+        
+
+   
+ 
+</div>
+
+        <!-- END WRAPPER -->
+        
+       
+        
+        
+        <!-- START FOOTER -->
+        <div id="footer">
+<div class="section">
+
+<div class="footer-section one-third">
+<br>
+<h3>Contact Details</h3>
+<img alt="" src="images/footer_logo2_marcol.gif" /><br>
+<p><br>MARCOL PLACE HOLIDAY APARTMENTS<br>67 Hugh Street, West End Townsville<br />
+Queensland 4551 Australia<br /></p>
+<h4><a href="tel:0747241102">P: (07) 4724 1102</a></h4>
+<h4><a href="mailto:info@marcolplace.com.au?subject=Enquiry From Website">E: info@marcolplace.com.au</a></h4><br><br>
+<a target="blank" href="http://www.stayz.com.au/accommodation/qld/townsville-region/townsville/65521"><img alt="Townsville Holiday Accommodation" src="images/stayz.gif" /></a>
+
+</div>
+
+<div class="footer-section one-third">
+<br>
+<h3>Image Gallery</h3>
+<a href="marcol_place_holiday_apartments_townsville_gallery.htm"><img alt="Townsville Holiday Accommodation" src="images/marcol-place-holiday-apartments-footer.jpg" /></a>
+</div>
+
+<div class="footer-section one-third last">
+<br>
+
+<h3>Quick Links</h3>
+<ul type="square">
+<li><a href="http://www.marcolplace.com.au/index.htm">HOME</a></li>
+<li><a href="townsville_holiday_apartments.htm">THE APARTMENTS</a></li>
+<li><a href="marcol_place_holiday_apartments_townsville_gallery.htm">IMAGE GALLERY</a></li>
+<li><a href="reviews_marcol_place_townsville_apartments.htm">GUEST REVIEWS</a></li>
+<li><a href="marcol_place_apartments_rates.php">LATEST RATES</a></li>
+<li><a href="townsville_holiday_apartments_specials.php">SPECIALS</a></li>
+<li><a href="townsville-queensland.htm">ABOUT TOWNSVILLE</a></li>
+<li><a href="townsville_tours_activities.htm">TOURS & ACTIVITIES</a></li>
+<li><a href="contact_marcol_place_townsville.htm">CONTACT MARCOL PLACE TOWNSVILLE</a></li>
+</ul>
+<a href="marcol_place_apartments_rates.php"><img alt="Marcol Place Holiday Apartments Townsville Availability" src="images/availability2.gif" /></a>
+
+
+</div>
+
+
+
+<div class="divider-border"></div>
+
+<!--END ONE-->
+</div>
+<!--END SECTION-->
+<!--END FOOTER-->
+        <!-- END FOOTER -->
+        
+        <div class="footerBottom one text-align-center">
+        
+        <p class="duoLogo">
+<a href="http://www.downunderonline.com" target="_blank" title="Website Design" class="pd"><img src="images/duoLogo.png" alt="Website Design" width="225" height="25"></a></p>
+
+<p>Townsville Holiday Accommodation</p>
+</div>
+</div>
+
+        
+        <a href="#" id="back-top">Top</a>
+        
+        <script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$('.mpGallery').each(function() { // the containers for all your galleries
+			$(this).magnificPopup({
+				delegate: 'a', // the selector for gallery item
+				type: 'image',
+				gallery: {
+				  enabled:true
+				}
+			});
+		});
+	});
+</script>
+
+
+        
+        
+    
+</body>
+</html>
