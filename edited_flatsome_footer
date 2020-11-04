@@ -1,0 +1,313 @@
+<?php
+
+/**
+
+ * The template for displaying the footer.
+
+ *
+
+ * @package flatsome
+
+ */
+
+
+
+global $flatsome_opt;
+
+?>
+
+
+
+</div><!-- #main-content -->
+
+
+
+
+
+<footer class="footer-wrapper" role="contentinfo">	
+
+<?php if(isset($flatsome_opt['html_before_footer'])){
+
+	// BEFORE FOOTER HTML BLOCK
+
+	echo do_shortcode($flatsome_opt['html_before_footer']);
+
+} ?>
+
+
+
+
+
+<!-- FOOTER 1 -->
+
+<?php if ( is_active_sidebar( 'sidebar-footer-1' ) ) : ?>
+
+<div class="footer footer-1 <?php echo $flatsome_opt['footer_1_color']; ?>"  style="background-color:<?php echo $flatsome_opt['footer_1_bg_color']; ?>">
+
+	<div class="row">
+
+   		<?php dynamic_sidebar('sidebar-footer-1'); ?>        
+
+	</div><!-- end row -->
+
+</div><!-- end footer 1 -->
+
+<?php endif; ?>
+
+
+
+
+
+<!-- FOOTER 2 -->
+
+<?php if ( is_active_sidebar( 'sidebar-footer-2' ) ) : ?>
+
+<div class="footer footer-2 <?php echo $flatsome_opt['footer_2_color']; ?>" style="background-color:<?php echo $flatsome_opt['footer_2_bg_color']; ?>">
+
+	<div class="row">
+
+
+
+   		<?php dynamic_sidebar('sidebar-footer-2'); ?>        
+
+	</div><!-- end row -->
+
+</div><!-- end footer 2 -->
+
+<?php endif; ?>
+
+
+
+
+
+<?php if(isset($flatsome_opt['html_after_footer'])){
+
+	// AFTER FOOTER HTML BLOCK
+
+	echo do_shortcode($flatsome_opt['html_after_footer']);
+
+} ?>
+
+
+
+
+
+<div class="absolute-footer <?php echo $flatsome_opt['footer_bottom_style']; ?>" style="background-color:<?php echo $flatsome_opt['footer_bottom_color']; ?>">
+
+<div class="row">
+
+	<div class="large-12 columns">
+
+		<div class="left">
+
+			 <?php if ( has_nav_menu( 'footer' ) ) : ?>
+
+				<?php  
+
+						wp_nav_menu(array(
+
+							'theme_location' => 'footer',
+
+							'menu_class' => 'footer-nav',
+
+							'depth' => 1,
+
+							'fallback_cb' => false,
+
+						));
+
+				?>						
+
+			<?php endif; ?>
+
+		<div class="copyright-footer"><?php if(isset($flatsome_opt['footer_left_text'])) {echo $flatsome_opt['footer_left_text'];} else{ echo 'Define left footer text / navigation in Theme Option Panel';} ?></div>
+
+		</div><!-- .left -->
+
+		<div class="right">
+
+				<?php if(isset($flatsome_opt['footer_right_text'])){ echo do_shortcode($flatsome_opt['footer_right_text']);} else {echo 'Define right footer text in Theme Option Panel';} ?>
+
+		</div>
+
+	</div><!-- .large-12 -->
+
+</div><!-- .row-->
+
+</div><!-- .absolute-footer -->
+
+</footer><!-- .footer-wrapper -->
+
+</div><!-- #wrapper -->
+
+
+
+<!-- back to top -->
+
+<a href="#top" id="top-link"><span class="icon-angle-up"></span></a>
+
+<div class="scroll-to-bullets"></div>
+
+
+
+<?php if(isset($flatsome_opt['html_scripts_footer'])){
+
+	// Insert footer scripts
+
+	echo $flatsome_opt['html_scripts_footer'];
+
+} ?>
+
+
+
+<div class="mob-helper"></div>
+
+<?php wp_footer(); ?>
+
+
+
+<?php // start home page animation section ?>
+
+<div class="sc-home-start" id="qqw">
+
+    <div class="sc-home-modal">
+
+        <div class="sc-home-modal-container">
+
+        	<a class="sc-home-modal-close" title="Close" href="#hpdx">&times;</a>
+
+            <div class="sc-hmc-img-container"><img class="sc-home-modal-main-image" alt="Port Douglas Outrigger Best Rate Guaranteed" src="https://www.pdo.com.au/cms/wp-content/uploads/shadowbox-topimage.jpg" /></div>
+
+            <span class="schmc-line1">BOOK DIRECT<br>& SAVE 10%</span>
+
+            <span class="schmc-line2">Use the promo code</span>
+
+            <span class="schmc-line3">SAVE</span>
+
+            <span class="schmc-line4">to get 10% OFF rates.<br><br>Only available here!</span>
+
+            <a href="https://www.pdo.com.au/rates/" title="BOOK DIRECT" class="schmc-button">BOOK NOW</a>    
+
+        </div>
+
+    </div>
+
+</div>
+
+<?php // end home page animation section ?>
+
+
+
+<?php // start promo drawer animation section ?>
+
+<div class="sc-promo" id="prm">
+
+	<div class="sc-promo-shell" id="pdc">
+
+        <div class="sc-promo-bar">
+
+            <div class="sc-promo-bar-container">
+
+                Book Direct & SAVE 10%
+
+                <a class="sc-home-promo-open" title="Open" href="#hprm">+</a> 
+
+                <a class="sc-home-promo-close" title="Close" href="#hpdc">&times;</a>    
+
+            </div>
+
+            <div class="sc-promo-drawer">
+
+                <div class="sc-promo-drawer-container">
+
+                    <img class="sc-promo-drawer-main-image" alt="Port Douglas Outrigger Best Rate Guaranteed" src="https://www.pdo.com.au/cms/wp-content/uploads/shadowbox-image2.jpg" />
+
+                    <span class="scpd-line1"><br>BOOK DIRECT & SAVE 10%</span>
+
+                    <span class="scpd-line2">Use the promo code</span> 
+
+                    <span class="scpd-line3">SAVE</span>
+
+                    <span class="scpd-line4"><br>to get 10% OFF rates.<br>Only available here!<br>&nbsp;</span>
+
+                    <a href="https://www.pdo.com.au/rates/" title="BOOK DIRECT" class="scpd-button">BOOK NOW</a> 
+
+                    <br>&nbsp;     
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div> 
+
+<?php // end promo drawer animation section ?>
+
+
+
+<?php // closing shells used for animations - do not move ?></div></div></div></div>
+
+<script>
+
+(function($) {
+
+    var $window = $(window),
+
+        $target = $("#qqw");
+
+		$target2 = $("#prm");
+
+
+
+    function resize() {
+
+        if ($window.width() < 767) {
+
+            $target.addClass('sc-home-override');
+
+			$target2.addClass('sc-promo-override');
+
+			return
+
+        }
+
+		
+
+		if ($window.height() < 669) {
+
+            $target.addClass('sc-home-override');
+
+			$target2.addClass('sc-promo-override');
+
+			return
+
+        }
+
+
+
+        $target.removeClass('sc-home-override');
+
+		$target2.removeClass('sc-promo-override');
+
+    }
+
+
+
+    $window
+
+        .resize(resize)
+
+        .trigger('resize');
+
+})(jQuery);
+
+</script>
+
+
+
+</body>
+
+</html>
