@@ -1,0 +1,73 @@
+<?php
+require("includes/application_top.php");
+
+  if (isset($_REQUEST['category_id'])) {
+    $category_id = (int)$_REQUEST['category_id'];
+  }
+  
+  if (isset($_REQUEST['action'])) {
+    $action = $_REQUEST['action'];
+  }
+  
+  if ($action == 'delete_category' && $category_id > 0) {
+  	// Add the category
+	$strSQL = "delete from category where category_id = '".$category_id."'";
+	$category_update = tep_db_query($strSQL);
+	$success = true;
+	$message = 'Category has been deleted.';
+  }
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<link href="duo.css" media="screen" rel="stylesheet" type="text/css" />
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Listing Administration - All Categories</title>
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="2" cellpadding="2">
+  <tr>
+    <td colspan="2"><?php require("includes/header.php"); ?></td>
+  </tr>
+  <tr>
+    <td width="160" valign="top" class="padded_box"><?php require("includes/menu.php"); ?></td>
+    <td valign="top"><div class="heading">All Categories</div>
+	<div class="main">Click the category name to edit, or click the delete button to remove the category</div>
+	<div class="padded_box">	
+<?php
+	if ($success == true) {
+		echo '<div class="success">'.$message.'</div>';
+	}
+?>	
+<?php
+  $strSQL = "SELECT 
+			  category.category_id,
+			  category.category,
+			  count(duo_listing.category) AS number_listed
+			 FROM
+			  duo_listing
+			  RIGHT OUTER JOIN category ON (duo_listing.category = category.category_id)
+			 GROUP BY
+			  category.category_id,
+			  category.category
+			 ORDER BY category.category";
+			
+  $categories_query = tep_db_query($strSQL);
+  
+  while ($categories_data = tep_db_fetch_array($categories_query)) {
+?>	
+	<div class="main"><img src="images/arrow_small.gif" />&nbsp;&nbsp;<a href="edit_category.php?category_id=<?php echo $categories_data['category_id']; ?>"><strong><?php echo $categories_data['category'].'&nbsp;('.$categories_data['number_listed'].')</strong>'; ?></a>&nbsp;-
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="all_categories.php?category_id=<?php echo $categories_data['category_id']; ?>&action=delete_category" onclick="javascript:return confirm('Are you sure you want to delete this category?')">Delete Category</a></div>
+<?php
+  }
+?>
+	  </div>
+	</td>
+  </tr>
+</table>
+
+</body>
+</html>
+<?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
