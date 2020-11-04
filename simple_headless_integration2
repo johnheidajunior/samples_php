@@ -1,0 +1,466 @@
+<?php
+define('WP_USE_THEMES', false);
+require('./cms/wp-blog-header.php');
+?>
+<!DOCTYPE html>
+
+<html xmlns="https://www.w3.org/1999/xhtml">
+
+
+
+    
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>About Academy Graphics Design &amp; Print Victoria</title>
+
+<meta name="KEYWORDS" content="Design, Signs, Print, offset printing, signage, portfolio, about us, digital printing, Digital photocopying, business cards, posters, invitiations, wedding stationery, calendars, raffle tickets, thongs, mugs, stickers, magnets, key rings, stubby holders, envelopes, letterheads, docket books, note pads, paper folding, binding, laminating, brochures, flyers, presentation folders, large format printing, vinyl lettering, pull-up banners, teardrop/Bali banners, vehicle signage, shop fronts, safety signs, stamps, a-frames, Academy Graphics, Mallee, Swan Hill, Victoria, Australia">
+
+<meta name="DESCRIPTION" content="About Academy Graphics Academy Graphics is your one-stop solutions for printing, design and signs with a most creative, experienced & professional team.">
+
+<meta name="location" content="Swan Hill Victoria">
+
+<meta name="robots" content="index,follow">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+
+<link href="images/favicon.ico" rel="shortcut icon" />
+
+<link rel="alternate" href="https://www.academygraphics.com.au/about_academy_graphics.php" hreflang="en-au" />
+
+<link rel="canonical" href="https://www.academygraphics.com.au/about_academy_graphics.php"/>
+
+
+
+
+
+
+
+
+
+</head>
+
+<body id="top">
+
+
+
+
+
+    
+
+        <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+
+<link rel="stylesheet" type="text/css" href="stylesheets/responsive.css" />
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700italic,700,800,800italic,300italic,300" rel="stylesheet" type="text/css" />
+
+<!--[if lte IE 8]>
+
+	<link rel="stylesheet" type="text/css" href="stylesheets/ie8.css" />
+
+<![endif]-->
+
+        <script type="text/javascript" src="javascript/jquery-1.8.3.js"></script>
+
+<script type="text/javascript" src="javascript/custom.js"></script>
+
+<script type="text/javascript" src="javascript/header.js"></script>
+
+
+
+
+
+<!-- Flexslider JavaScript Files -->
+
+<link rel="stylesheet" href="stylesheets/flexslider.css" type="text/css" media="screen" />
+
+<script type="text/javascript" src="javascript/jquery.flexslider.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+	$('#index-slider').flexslider({
+
+		animation: "slide",  
+
+		slideDirection: "",       
+
+		slideshowSpeed: 3500,      
+
+		animationDuration: 500,	       
+
+		pauseOnHover: true,		
+
+        smoothHeight: true
+
+	});	
+
+});
+
+</script>
+
+<!-- bxSlider Javascript file -->
+
+<link rel="stylesheet" type="text/css" href="stylesheets/bxslider.css" />
+
+<script src="javascript/jquery.bxslider.min.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){    
+
+	$('#testimonials').bxSlider({
+
+	  controls: true,
+
+	  auto: true,
+
+	  pager: true,
+
+	  adaptiveHeight: false,
+
+	  mode: 'fade'
+
+	});
+
+});
+
+</script>
+
+
+
+        <div id="wrapper">
+
+        <!-- START HEADER -->
+
+        <div id="header-wrapper">
+
+  <div class="header clear"> <div id="logo">
+
+<a href="https://www.academygraphics.com.au/index.htm"><img alt="" src="images/logo.png" /></a>
+
+</div>
+
+<!--END LOGO-->
+
+    
+
+    <div id="primary-menu"><br>
+
+    <ul class="menu">
+
+        
+
+    <li  > <span class=""></span><a href="portfolio_academy_graphics_victoria.php">Work<span class="menu_description"></span></a></li>
+
+    
+
+    <li  > <span class=""></span><a href="printing_services_victoria.php">Services<span class="menu_description"></span></a></li>
+
+    
+
+    <li  > <a href="about_academy_graphics.php"><span class="active">About Us</span><span class="menu_description"></span></a></li>   
+
+    
+
+    <li  > <span class=""></span><a href="contact_academy_graphics_printers_victoria.htm">Contact<span class="menu_description"></span></a></li>
+
+    
+
+         
+
+    
+
+
+
+        
+
+    </ul>
+
+    </div>
+
+    
+
+
+
+
+
+<!--END PRIMARY MENU-->
+
+  </div>
+
+  
+
+ 
+
+  
+
+    
+
+  
+
+  
+
+  
+
+</div>
+
+        <!-- END HEADER -->
+
+        
+
+        
+
+        
+
+              
+
+    
+
+    
+
+        <!-- START HOME -->
+
+        <div id="content-wrapper">
+
+       <div class="fullwidth">
+
+        
+
+        <div id="header-wrapper2">
+
+     
+
+       
+
+        <div class="text-align-center">
+
+        <h11>Creative, Quality Print Services & Graphic Design in Swan Hill, Victoria & Surrounds - 25 Years Plus Experience&nbsp;&nbsp;&nbsp;</h11>
+
+        <a href="contact_academy_graphics_printers_victoria.htm" title="Victoria Printer Academy Graphics" class="button medium green">Quick Quote</a>
+
+
+
+        </div>
+
+        
+
+               
+
+        
+
+        </div>
+
+
+
+               
+
+       
+
+       </div>
+
+        <!--END FULLWIDTH-->
+
+       
+
+        
+
+        <br />        
+
+<?php
+	$post_id = 7;
+	$queried_post = get_post($post_id);
+	echo $queried_post->post_content;
+?>  
+
+        </div>
+
+        <!--END CONTENT-WRAPPER-->
+
+        <!-- END HOME -->
+
+    
+
+
+
+        
+
+  	
+
+	 <br><br><br>
+
+	
+
+	
+
+	
+
+	</div>
+
+
+
+        <!-- END WRAPPER -->
+
+        
+
+       
+
+        
+
+        
+
+       
+
+      
+
+        
+
+        
+
+        <!-- START FOOTER -->
+
+        <div id="footer">
+
+       
+
+  
+
+            <!-- START MAP -->
+            <style>.embedz-container { position: relative; padding-bottom: 56.25%; padding-top: 25px; height: 0; overflow: hidden; max-width: 100%; min-height:400px;} .embedz-container iframe, .embedz-container object, .embedz-container embed { position: absolute; top: -200px; left: 0; width: 100%; height: 800px; pointer-events:none; }</style>
+            <div class="one" style="height:400px; width:100%; overflow:hidden;">
+                <div style="-webkit-filter: grayscale(100%); filter: grayscale(100%);" class="embedz-container">             
+<iframe src="https://maps.google.com/maps?q=363-367 campbell st, swan hill, victoria, australia&layer=tc&t=m&z=17&source=embed&output=svembed" width="1900" height="400" frameborder="0" style="border:0;" allowfullscreen></iframe>
+                </div>
+            </div>    
+            <!-- END MAP -->
+
+     
+
+
+
+       
+
+      
+
+        
+
+        
+
+           
+
+ 
+
+
+
+
+
+<div class="section">
+
+
+
+<div class="footer-section one-third" align="center">
+
+<img alt="Victoria Printer Academy Graphics Print Design Signage" src="images/footer-logo.gif" />
+
+</div>
+
+
+
+<div class="footer-section one-third">
+
+
+
+<h3><img alt="Victoria Printer Academy Graphics Print Design Signage" src="images/pointer.gif" />&nbsp; 363-367 Campbell St. Swan Hill, Vic 3585</h3>
+
+<h3><img alt="Victoria Printer Academy Graphics Print Design Signage" src="images/email.gif" />&nbsp;
+
+<a href="mailto:info@academygraphics.com.au?subject=Enquiry From Website">
+
+info@academygraphics.com.au</a></h3>
+
+</div>
+
+
+
+<div class="footer-section one-third last">
+
+<h5><a href="tel:0350322725"><img alt="Victoria Printer Academy Graphics Print Design Signage" src="images/phone.gif" />&nbsp; (03) 5032 2725 h466</a></h5>
+
+<div class="duoLogo" align="left">
+
+<a href="https://www.facebook.com/academygraphicsswanhill/" target="_blank" title="Facebook" class="pd"><img src="images/facebook.gif" alt="Academy Graphics print Design Signs"></a></div>
+
+
+
+</div>
+
+
+
+
+
+<div class="one">
+
+
+
+<div class="divider-border"></div>
+
+<p align="center"><h7>Swan Hill Victoria Printer</h7></p>
+
+<div class="duoLogo" align="center">
+
+<a href="https://www.downunderonline.com" target="_blank" title="Website Design" class="pd"><img src="images/duoLogo.png" alt="Website Design" width="225" height="25"></a></div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<!--END ONE-->
+
+</div>
+
+<!--END SECTION-->
+
+<!--END FOOTER-->
+
+        <!-- END FOOTER -->
+
+        
+
+        
+
+</div>
+
+
+
+        
+
+        <a href="#" id="back-top">Top</a>
+
+        
+
+        
+
+
+
+        
+
+        
+
+    
+
+</body>
+
+</html>
