@@ -1,0 +1,425 @@
+<?php
+require("includes/application_top.php");
+// ------------------------------------------------------------------------------------------------------------------------------------------------- //
+$listing_id = (int)$_REQUEST['listing_id'];
+$name = tep_db_prepare_input($_REQUEST['name']);
+$description = tep_db_prepare_input($_REQUEST['description']);
+$star_rating = tep_db_prepare_input($_REQUEST['star_rating']);
+$link = tep_db_prepare_input($_REQUEST['link']);
+$direct_link = $_REQUEST['direct_link'];
+$flash_file = $_REQUEST['flash_file'];
+$category = tep_db_prepare_input((string)$_REQUEST['category']);
+$listing_image = tep_db_prepare_input($_REQUEST['listing_image']);
+$address = tep_db_prepare_input($_REQUEST['address']);
+$city = tep_db_prepare_input($_REQUEST['city']);
+$state = tep_db_prepare_input($_REQUEST['state']);
+$postcode = tep_db_prepare_input($_REQUEST['postcode']);
+$country = tep_db_prepare_input($_REQUEST['country']);
+$latitude = tep_db_prepare_input($_REQUEST['latitude']);
+$longitude = tep_db_prepare_input($_REQUEST['longitude']);
+$active = (int)$_REQUEST['active'];
+$display = (int)$_REQUEST['display'];
+$phone = tep_db_prepare_input($_REQUEST['phone']);
+$clientemail = tep_db_prepare_input($_REQUEST['clientemail']);
+$adspeedZoneID = tep_db_prepare_input($_REQUEST['adspeedZoneID']);
+$pricingR1 = tep_db_prepare_input($_REQUEST['pricingR1']);
+$pricingR2 = tep_db_prepare_input($_REQUEST['pricingR2']);
+$rating_type = tep_db_prepare_input($_REQUEST['rating_type']);
+$descriptionIntro = tep_db_prepare_input($_REQUEST['descriptionIntro']);
+$priorityListing = (int)$_REQUEST['priorityListing'];
+$priorityOrder = (int)$_REQUEST['priorityOrder'];
+// ------------------------------------------------------------------------------------------------------------------------------------------------- //  
+$category_id = (int)$_REQUEST['category_id'];
+$action = $_REQUEST['action'];
+// ------------------------------------------------------------------------------------------------------------------------------------------------- //
+if ($action == 'update_listing' && strlen($message) == 0) {
+
+	$strSQL = "UPDATE duo_listing SET name='".tep_db_input($name).
+	"', description='".tep_db_input($description).
+	"', star_rating='".tep_db_input($star_rating).
+	"', link='http://".tep_db_input($direct_link).
+	"', direct_link='".tep_db_input($direct_link).
+	"', flash_file='".tep_db_input($flash_file).
+	"', category='".$category_id.
+	"', listing_image='".tep_db_input($listing_image).
+	"', address='".tep_db_input($address).
+	"', city='".tep_db_input($city).
+	"', state='".tep_db_input($state).
+	"', postcode='".tep_db_input($postcode).
+	"', country='".tep_db_input($country).
+	"', latitude='".tep_db_input($latitude).
+	"', longitude='".tep_db_input($longitude).
+	"', active='".tep_db_input($active).
+	"', display='".tep_db_input($display).
+	"', phone='".tep_db_input($phone).
+	"', clientemail='".tep_db_input($clientemail).
+	"', adspeedZoneID='".tep_db_input($adspeedZoneID).
+	"', pricingR1='".tep_db_input($pricingR1).
+	"', pricingR2='".tep_db_input($pricingR2).
+	"', rating_type='".tep_db_input($rating_type).
+	"', descriptionIntro='".tep_db_input($descriptionIntro).
+	"', priorityListing='".tep_db_input($priorityListing).
+	"', priorityOrder='".tep_db_input($priorityOrder).
+	"' WHERE listing_id='".$listing_id."'";
+
+	$category_update = tep_db_query($strSQL);
+	$success = true;
+	$message = 'Listing Has Been Updated.';
+	
+} elseif ($action == 'delete_listing' && strlen($message) == 0) {
+	  
+	$strSQL = "delete from duo_listing where listing_id='".$listing_id."'";
+	tep_db_query($strSQL);
+	
+	// once done, redirect to the edit page
+	tep_redirect('edit_listing.php?action=delete_success');
+	
+} elseif ($action == 'delete_success') {
+	  
+    $success = true;
+  	$message = 'The listing has been successfully deleted from the database';
+	
+} elseif ($listing_id > 0) {
+	  
+    // pull data on the record needed	 
+	$strSQL = "SELECT * FROM duo_listing WHERE duo_listing.listing_id = '".$listing_id."'";	
+	$listing_query = tep_db_query($strSQL);
+
+	while ($listing_data = tep_db_fetch_array($listing_query)) {
+		$name = $listing_data['name'];
+		$description = $listing_data['description'];
+		$star_rating = $listing_data['star_rating'];
+		$link = $listing_data['link'];
+		$direct_link = $listing_data['direct_link'];
+		$flash_file = $listing_data['flash_file'];
+		$category = $listing_data['category'];
+		$listing_image = $listing_data['listing_image'];
+		$address = $listing_data['address'];
+		$city = $listing_data['city'];
+		$state = $listing_data['state'];
+		$postcode = $listing_data['postcode'];
+		$country = $listing_data['country'];
+		$latitude = $listing_data['latitude'];
+		$longitude = $listing_data['longitude'];
+		$active = $listing_data['active'];
+		$display = $listing_data['display'];
+		$phone = $listing_data['phone'];
+		$clientemail = $listing_data['clientemail'];
+		$adspeedZoneID = $listing_data['adspeedZoneID']; 
+		$pricingR1 = $listing_data['pricingR1']; 
+		$pricingR2 = $listing_data['pricingR2']; 
+		$rating_type = $listing_data['rating_type']; 
+		$descriptionIntro = $listing_data['descriptionIntro']; 
+		$priorityListing = $listing_data['priorityListing']; 
+		$priorityOrder = $listing_data['priorityOrder']; 
+	}
+}
+
+$strSQL = "SELECT category.category_id,
+	category.category
+	FROM category
+	WHERE category.category_id = '".$category_id."'";
+			
+$categories_query = tep_db_query($strSQL);
+  
+while ($categories_data = tep_db_fetch_array($categories_query)) {
+	$category = $categories_data['category'];
+}
+  
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<link href="duo.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="../listing_reqfiles/redesigned_listings.css" media="screen" rel="stylesheet" type="text/css" />
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Listing Administration - Edit Listing</title>
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="2" cellpadding="2">
+  <tr>
+    <td colspan="2"><?php require("includes/header.php"); ?></td>
+  </tr>
+  <tr>
+    <td width="160" valign="top" class="padded_box"><?php require("includes/menu.php"); ?></td>
+    <td valign="top"><div class="heading">Edit Listing</div>	
+<?php
+if ($success == true) {
+	echo '<div class="success">'.$message.'</div>';
+}
+?>
+
+
+
+
+
+
+
+
+
+<form action="edit_listing.php" method="get">
+Edit Listing - 
+<select name="listing_id">
+<?php
+$strSQL = "SELECT duo_listing.listing_id,
+	duo_listing.name
+	FROM
+	duo_listing
+	ORDER BY
+	duo_listing.name";
+
+$categories_query = tep_db_query($strSQL);
+  
+while ($categories_data = tep_db_fetch_array($categories_query)) {
+  	// if editing, ensure that the right value is selected.
+
+	if ((int)$listing_id == (int)$categories_data['listing_id']) {
+		$selected = ' selected="selected"';
+	} else {
+		$selected = '';
+	}
+?>	
+	<option value="<?php echo $categories_data['listing_id']; ?>"<?php echo $selected; ?>><?php echo $categories_data['name']; ?></option>
+<?php  
+}
+?>
+</select>
+&nbsp;&nbsp;
+<input name="" type="submit" value="Edit" /><br />
+<br />
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+if ($action == 'update_listing') {
+	$strSQL = "SELECT * FROM duo_listing WHERE duo_listing.listing_id = '".$listing_id."'";		
+	$pml = 0;
+	require('../listing_reqfiles/output_listing.php'); // contains listing layout	
+?>
+	<div class="heading">Listing Preview</div>
+	<div><?php echo $listing_output; ?></div>
+<?php
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if ($action <> 'update_listing' && $listing_id <> 0) {
+?>	
+    <img src="images/delete.png" />&nbsp;<a href="edit_listing.php?listing_id=<?php echo $listing_id; ?>&action=delete_listing" onclick="javascript:return confirm('Are you sure you want to delete <?php echo $name; ?>?')">Click Here To Delete '<?php echo $name; ?>'</a>
+    
+    <div><img src="images/pixel_trans.gif" width="100%" height="10" /></div>
+    
+    <form action="edit_listing.php" method="post"><input name="action" type="hidden" value="update_listing" /><input name="listing_id" type="hidden" value="<?php echo $listing_id; ?>" />
+    	<div class="padded_box">
+			<p>Simply fill in the fields below and click the 'Update Listing' Button.></p>
+    
+                    <div class="inputLAC">
+                        <div class="inputLabelLAC">Listing Category</div>
+                        <div class="inputFieldLAC">
+                            <select name="category_id">
+                                <?php
+                                $strSQL = "SELECT category.category_id, category.category FROM category ORDER BY category.category";
+                            
+                                $categories_query = tep_db_query($strSQL);
+                    
+                                while ($categories_data = tep_db_fetch_array($categories_query)) {
+                                    // if editing, ensure that the right value is selected.
+                                    if ($category == $categories_data['category_id']) {
+                                        $selected = ' selected="selected"';
+                                    } else {
+                                        $selected = '';
+                                    }
+                                ?>	  
+                                    <option value="<?php echo $categories_data['category_id']; ?>"<?php echo $selected; ?>><?php echo $categories_data['category']; ?></option>
+                                <?php
+                                } // END while ($categories_data = tep_db_fetch_array($categories_query))
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="inputLAC">
+                        <div class="inputLabelLAC">Listing Name<br /><span>Used to identify this listing within this application</span></div>
+                        <div class="inputFieldLAC"><input name="name" type="text" size="60" maxlength="120" value="<?php echo $name; ?>" /></div>
+                    </div>
+
+                    <div class="inputLAC">   
+                    	<div class="inputLabelLAC">Priority Listing<br /><span>Check this box to set this listing as a priority listing to be displayed at the top of the page</span></div>
+                    	<div class="inputFieldLAC"><input name="priorityListing" type="checkbox" value="1" <?php if ((int)$priorityListing == 1) { echo 'checked'; } ?> /></div>
+                    </div>
+                    
+                    <div class="inputLAC">   
+                    	<div class="inputLabelLAC">Priority Order<br /><span>If this is a priority listing, enter a number corresponding to the ranking order that this listing should be displayed, in relation to the other priority listings on the page - lower numbers appear toward the top of the priority listing section of the page</div>
+                    	<div class="inputFieldLAC"><input name="priorityOrder" type="text" size="3" maxlength="3" value="<?php echo $priorityOrder; ?>" /></div>
+                    </div>
+
+                    <div class="inputLAC">   
+                    	<div class="inputLabelLAC">Listing Description Introduction<br /><span>Text included at the beginning of the main body text copy of the listing and set in bold type</span></div>
+                    	<div class="inputFieldLAC"><input name="descriptionIntro" style="width:98%;" id="descriptionIntro" type="text" size="100" maxlength="320" value="<?php echo $descriptionIntro; ?>" /></div>
+                    </div>
+
+					<div class="inputLAC">   
+                    	<div class="inputLabelLAC">Listing Description<br /><span>Text comprising the main body text copy of the listing, displayed immediately after the introduction copy entered above</span></div>
+                    	<div class="inputFieldLAC"><textarea name="description" style="width:98%;" rows="4"><?php echo $description; ?></textarea></div>
+                    </div>
+            
+					<div class="inputLAC">
+                    	<div class="inputLabelLAC">Rating Type<br /><span>Set the rating type to either 'self' or 'star' to display the related rating grpahics within the listing</span></div>
+                    	<div class="inputFieldLAC">
+                            <?php
+                            $selectedSelf = '';
+                            $selectedStar = '';
+                            
+                            if ($rating_type < 1) {
+                                $selectedSelf = ' selected="selected"';
+                            } else {
+                                $selectedStar = ' selected="selected"';
+                            }
+                            ?> 
+                            <select name="rating_type">
+                                <option value="0" <?php echo $selectedSelf; ?>>Self</option>
+                                <option value="1" <?php echo $selectedStar; ?>>Star</option>
+                            </select>
+                        </div>                    
+                    </div>
+                    
+					<div class="inputLAC">   
+                    	<div class="inputLabelLAC">Rating<br /><span>A number in the range from 1.0 to 5.0</span></div>
+                    	<div class="inputFieldLAC"><input name="star_rating" type="text" size="3" maxlength="3" value="<?php echo round($star_rating,1); ?>" /></div>
+                    </div>
+            
+                    <div class="inputLAC">   
+                    	<div class="inputLabelLAC">Image<br /><span>Must be in a .jpg, .png or .gif file format. Image file must be uploaded into the main images directory<br />(downunderonline.com/images)</span></div>
+                    	<div class="inputFieldLAC"><input name="listing_image" type="text" size="20" maxlength="100" value="<?php echo $listing_image; ?>" /></div>
+                    </div>
+                    
+                    <div class="inputLAC">   
+                    	<div class="inputLabelLAC">Adspeed Zone ID Number<br /><span>Zone ID number associated with the client ad information on the Adspeed.com account</span></div>
+                    	<div class="inputFieldLAC"><input name="adspeedZoneID" type="text" size="20" maxlength="20" value="<?php echo $adspeedZoneID; ?>" /></div>
+                    </div>
+                    
+                    <div class="inputLAC">   
+                    	<div class="inputLabelLAC">Pricing Header Information<br /><span>Appears at the top of the pricing section on the right side of the listing</span></div>
+                    	<div class="inputFieldLAC"><input name="pricingR1" type="text" size="20" maxlength="20" value="<?php echo $pricingR1; ?>" /></div>
+                    </div>
+                    
+                    <div class="inputLAC">   
+                    	<div class="inputLabelLAC">Pricing Starting Amount<br /><span>Pricing displayed within the pricing section on the right side of the listing</div>
+                    	<div class="inputFieldLAC"><input name="pricingR2" type="text" size="3" maxlength="3" value="<?php echo $pricingR2; ?>" /></div>
+                    </div>
+        
+                    <div class="inputLAC">   
+                    	<div class="inputLabelLAC">Address</div>
+                    	<div class="inputFieldLAC"><input name="address" id="address" type="text" size="60" maxlength="120" value="<?php echo $address; ?>" /></div>
+                    </div>
+                    
+                    <div class="inputLAC">   
+                    	<div class="inputLabelLAC">City</div>
+                    	<div class="inputFieldLAC"><input name="city" id="city" type="text" size="20" maxlength="50" value="<?php echo $city; ?>" /></div>
+                    </div>
+                    
+                    <div class="inputLAC">   
+                    	<div class="inputLabelLAC">State</div>
+                    	<div class="inputFieldLAC">
+                            <select name="state" id="state">
+                                <option value="" <?php if ($state == '') echo 'selected="selected"'; ?>>Please Select...</option>
+                                <option value="VIC" <?php if ($state == 'VIC') echo 'selected="selected"'; ?>>VIC</option>
+                                <option value="NSW" <?php if ($state == 'NSW') echo 'selected="selected"'; ?>>NSW</option>
+                                <option value="ACT" <?php if ($state == 'ACT') echo 'selected="selected"'; ?>>ACT</option>
+                                <option value="QLD" <?php if ($state == 'QLD') echo 'selected="selected"'; ?>>QLD</option>
+                                <option value="NT" <?php if ($state == 'NT') echo 'selected="selected"'; ?>>NT</option>
+                                <option value="WA" <?php if ($state == 'WA') echo 'selected="selected"'; ?>>WA</option>
+                                <option value="SA" <?php if ($state == 'SA') echo 'selected="selected"'; ?>>SA</option>
+                                <option value="TAS" <?php if ($state == 'TAS') echo 'selected="selected"'; ?>>TAS</option>
+                            </select>
+                        </div>                    
+                    </div>
+                    
+                    <div class="inputLAC">   
+                    	<div class="inputLabelLAC">Postcode</div>           
+                    	<div class="inputFieldLAC"><input name="postcode" id="postcode" type="text" size="4" maxlength="4" value="<?php echo $postcode; ?>" /></div>
+                    </div>
+        
+                    <div class="inputLAC">   
+                    	<div class="inputLabelLAC">Country</div>
+                    	<div class="inputFieldLAC"><input name="country" id="country" type="text" size="20" maxlength="50" value="<?php echo $country; ?>" /></div>
+                    </div>
+        
+                    <div class="inputLAC">   
+                    	<div class="inputLabelLAC">Phone Number</div>
+                    	<div class="inputFieldLAC"><input name="phone" id="phone" type="text" size="12" maxlength="19" value="<?php echo $phone; ?>" /></div>
+                    </div>
+                    
+                    <div class="inputLAC">   
+                    	<div class="inputLabelLAC">Email Address</div>
+                    	<div class="inputFieldLAC"><input name="clientemail" style="width:98%;" id="clientemail" type="text" size="100" maxlength="320" value="<?php echo $clientemail; ?>" /></div>
+                    </div>
+                    
+                    <div class="inputLAC">   
+                    	<div class="inputLabelLAC">Active</div>
+                    	<div class="inputFieldLAC"><input name="active" type="checkbox" value="1" <?php if ((int)$active == 1) { echo 'checked'; } ?> /></div>
+                    </div>
+                    
+                    <div class="inputLAC">   
+                    	<div class="inputLabelLAC">Display in Random Listings</div>
+                    	<div class="inputFieldLAC"><input name="display" type="checkbox" value="1" <?php if ((int)$display == 1) { echo 'checked'; } ?> /></div>
+                    </div>
+                    
+                    <div class="inputLAC">  
+                    	<div class="main"><input type="submit" value="Edit Listing" />&nbsp;&nbsp;<input name="reset" type="reset" /></div>
+                    </div>
+				</div>
+			</form>
+<?php
+}
+
+// Show up if doing editing, restrict to doing just the listings for the same category
+if ($action == 'update_listing') {
+?>
+	<p>&nbsp;</p>
+	<div class="heading">Javascript to invoke the Category that this listing shows up under</div>
+<textarea name="javascript" rows="7" style="width: 98%" readonly="readonly"><script language="JavaScript" type="text/javascript">
+<!--
+   document.write ("<" + "script language='JavaScript' type='text/javascript' src='");
+   document.write ("http://www.downunderonline.com/display_listing.php?category=<?php echo $category_id; ?>");
+   document.write ("'><" + "/script>");
+//-->
+</script></textarea>
+<?php
+  }
+?>	</td>
+  </tr>
+</table>
+
+</body>
+</html>
+<?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
