@@ -1,0 +1,55 @@
+<?php
+include_once($_SERVER['DOCUMENT_ROOT']."/_cfg/build.h.php");
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Quattro By Restt</title>
+    <? include_once($_SERVER['DOCUMENT_ROOT']."/_panels/meta.php");?>
+  </head>
+  <body>
+    <? include_once($_SERVER['DOCUMENT_ROOT']."/_panels/header.php");?>
+    <? include_once($_SERVER['DOCUMENT_ROOT']."/_panels/nav.php");?>
+
+    <main class="site-content">
+      <section class="section">
+        <div class="container">
+          <img class="main-image" src="/img/brisbane-entertainment-centre.jpg">
+          <h2 class="mb-4">Suncorp Stadium</h2>
+          <p>
+            ENTERTAINMENT CENTRAL: why not enjoy the whole night without the hassle of driving or parking rage.  Quattro on Astor is only a short walk from Central Railway Station — remove the stress and stay the night https://www.quattroonastor.com.au/specials/book-direct-and-save/
+          </p>
+          <p>
+            Upcoming Events:<br>
+            7.30pm Fri 10 Nov, 17- DRAKE
+            6.30pm Fri 17 Nov, 17- BULLETS V WILDCATS
+            8.00pm Sat 18 Nov, 17- TAKE THAT LIVE 2017
+            7.30pm Wed 29 Nov, 17-SHAWN MENDES
+            6.45pm Sat 2 Dec, 2017- CULTURE CLUB
+            7.30pm Wed 6 Dec, 2017-THE WEEKND- STARBOY TOUR
+            8.00pm Sat 9 & Sun 10 Dec, 17- YUSAF-CAT STEVENS
+            10am & 1pm Sat 16 Dec, 17- WIGGLES — BIG CHRISTMAS SHOW
+            4.30pm Sat 20 Jan, 18 – BULLETS V MELBOURNE
+            8.00pm Tue 6 Feb, 18- RODGER WALTERS
+            Thu 8 – Sat 10 Feb, 18- MRS BROWN BOYS
+            Sun 11 Feb, 18- EVANESCENE
+            6.30pm Thu 15 Feb, 18- BULLETS V SYDNEY KINGS
+            7.30pm Tue 20 Feb, 18- ROBBIE WILLIAMS
+            8.15pm Sat 24 Feb, 18- QUEEN AND ADAM LAMBERT
+            7.30pm Wed 14 & Thu 15 Mar, 18- BRUNO MARS
+            Sat 21 Apr, 18- THE SCRIPT
+            8.00pm Fri 27 Apr, 18- THE KILLERS
+            7.45pm Sat 28 Apr, 18- HARRY STYLES
+            7.00pm Sun 3 Jun, 18- NIALL HORAN–FLICKER WORLD TOUR
+            7.30pm Wed 8 & Fri 10 Aug, 18- KATY PERRY
+            14 – 23 Aug, 18- PINK
+          </p>
+        </div>
+      </section>
+
+    </main>
+
+    <? include_once($_SERVER['DOCUMENT_ROOT']."/_panels/footer.php");?>
+    <? include_once($_SERVER['DOCUMENT_ROOT']."/_panels/footer.js.php");?>
+  </body>
+</html>
