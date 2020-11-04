@@ -1,0 +1,20 @@
+<?php
+	// *****************************************************************************************************************
+	// Copyright (c) Down Under Online/John Heida Junior. All Rights Reserved.
+	// *****************************************************************************************************************
+	// change log:  /accommodation_events_australian_capital_territory.php
+	// *****************************************************************************************************************
+
+	$accommodation_page_title = 'Canberra Australia Events and Accommodation Information';
+	$accommodation_page_keywords = 'Canberra Australia, Canberra Australia Events, Festivals, Canberra Australia Events, Australia Attractions, Holiday Events, Travel, Holiday, Australian';
+	$accommodation_page_description = 'Canberra Australia Major Events & Festivals - Events in Canberra - Canberra Festivals - the perfect reason for a Canberra Australia Holiday';
+	$accommodation_page_location = 'Canberra ACT Australia';
+	
+	$accommodation_page_header_link_text = 'Australia Accommodation & Travel Guide';
+	$accommodation_page_header_line2_text = 'Canberra ACT Australia Events';
+	$accommodation_page_header_line3_text = 'Canberra ACT Australia Holiday Destination';
+
+	require_once('accommodation_section1.php');
+	require_once('accommodation_section2.php');
+	require_once('accommodation_section3.php');
+?>
