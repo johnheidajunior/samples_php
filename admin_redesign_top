@@ -1,0 +1,54 @@
+<?php
+// start the timer for the page parse time log
+  define('PAGE_PARSE_START_TIME', microtime());
+
+// set the level of error reporting
+  error_reporting(E_ALL & ~E_NOTICE);
+
+// check if register_globals is enabled.
+// since this is a temporary measure this message is hardcoded. The requirement will be removed before 2.2 is finalized.
+//  if (function_exists('ini_get')) {
+//    ini_get('register_globals') or exit('FATAL ERROR: register_globals is disabled in php.ini, please enable it!');
+//  }
+
+// Set the local configuration parameters - mainly for developers
+  if (file_exists('includes/local/configure.php')) include('includes/local/configure.php');
+
+// include server parameters
+  require('includes/configure.php');
+
+// set php_self in the local scope
+  if (!isset($PHP_SELF)) $PHP_SELF = $HTTP_SERVER_VARS['PHP_SELF'];
+
+  if ($request_type == 'NONSSL') {
+    define('DIR_WS_CATALOG', DIR_WS_HTTP_CATALOG);
+  } else {
+    define('DIR_WS_CATALOG', DIR_WS_HTTPS_CATALOG);
+  }
+
+// infobox
+  require(DIR_WS_CLASSES . 'boxes.php');
+
+// define how the session functions will be used
+  require(DIR_WS_FUNCTIONS . 'sessions.php');
+
+// initialize the message stack for output messages
+  require(DIR_WS_CLASSES . 'message_stack.php');
+  $messageStack = new messageStack;
+
+// file uploading class
+  require(DIR_WS_CLASSES . 'upload.php');
+  
+// include validation functions (right now only email address)
+  require(DIR_WS_FUNCTIONS . 'validations.php');
+
+// include the database functions
+  require(DIR_WS_FUNCTIONS . 'database.php');
+
+// make a connection to the database... now
+  tep_db_connect() or die('Unable to connect to database server!');
+
+// define general functions used application-wide
+  require(DIR_WS_FUNCTIONS . 'general.php');
+  require(DIR_WS_FUNCTIONS . 'html_output.php'); 
+?>
