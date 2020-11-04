@@ -1,0 +1,948 @@
+<?php
+/* ******************************************************************************************************************************************************************************************* */
+/* ******************************************************************************************************************************************************************************************* */
+	function outputLandingContent() {
+/* ---------------------------------------------------------------------------------- */
+		$databaseConnection = mysqli_connect("localhost", "********************", "********************", "********************") or die("Some error occurred during connection ".mysqli_error($databaseConnection));
+
+		/* ---------------------------------------------------------------------------------- */
+		/* START compile landing box content and general page content                         */
+		/* category 5 = landing page                                                          */
+		/* ---------------------------------------------------------------------------------- */
+		$landingBoxContent = '';
+		
+		$landingQuery = 'SELECT s.id AS subject_id, 
+							s.subject_name, 
+							s.category_id, 
+							s.category_background_color, 
+							s.box_size
+					   FROM ********** s 
+					   WHERE s.category_id = 5
+					   ORDER BY s.category_id';
+	
+		$landingQueryResults = mysqli_query($databaseConnection, $landingQuery);
+		
+		if (mysqli_num_rows($landingQueryResults) > 0) {
+			
+			while ($row_landingQueryResults = mysqli_fetch_assoc($landingQueryResults)) {
+				$landingArray[] = array('subjectId' => $row_landingQueryResults['subject_id'], 
+												'subjectName' => $row_landingQueryResults['subject_name'], 
+									            'useCategoryBackground' => $row_landingQueryResults['category_background_color'], 
+												'boxSize' => $row_landingQueryResults['box_size']);		
+			}	
+			
+			mysqli_free_result($landingQueryResults);
+			
+			$landingSummary = 'versatile asset with a combined array of skills, integrating both technical and creative experience on a variety of&nbsp;platforms';
+
+			/* START create color box */
+			$currentGridItemClass = '';
+			$keyArray = array();
+			$rowArray = array();
+
+			foreach ($landingArray as $keyArray => $rowArray) {				
+				$currentGridItemClass = 'grid-item gi--sup';
+	
+				if ($rowArray['useCategoryBackground'] == 1) {
+					$currentGridItemClass .= ' gi--gen-alt';
+				} else {
+					$currentGridItemClass .= ' gi--gen';
+				}
+				
+				$currentGridItemTextWLB = str_replace(' ', '<br />', strtolower($rowArray['subjectName']));
+	
+				$landingBoxContent .= '<div class="'.$currentGridItemClass.'" unselectable="on">';			
+				$landingBoxContent .= '<div class="grid-item-color-box">';			
+				$landingBoxContent .= '<div class="grid-item-text-box">'.$currentGridItemTextWLB.'</div>';		
+				$landingBoxContent .= '</div>';	
+				
+				if ($rowArray['subjectId'] == 120) {
+					$landingBoxContent .= '<a href="contact.php" title="Contact" tabindex="0">';
+				} else {
+					$landingBoxContent .= '<a href="nexus.php?n='.$rowArray['subjectId'].'" title="'.$rowArray['subjectName'].'" tabindex="0">';
+				}
+
+				$landingBoxContent .= '<div class="linkbox"><span class="sr-only">Open '.$rowArray['subjectName'].' link.</span></div>';
+				$landingBoxContent .= '</a>';
+				$landingBoxContent .= '<div class="closebox"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Close '.$rowArray['subjectName'].' link box.</span></div>';
+				$landingBoxContent .= '<div class="bkgndbox"></div>';
+				
+				$landingBoxContent .= '</div>';
+			}	
+			/* END create color box */
+			
+		} else {	
+		
+			$landingBoxContent = 'No resources were found.';	
+		}
+		/* ---------------------------------------------------------------------------------- */
+		/* END compile landing box content and general page content */
+		/* ---------------------------------------------------------------------------------- */
+		
+		/* ---------------------------------------------------------------------------------- */
+		/* START compile page content */
+		/* ---------------------------------------------------------------------------------- */
+		$contentOutput = '';
+		
+		$contentOutput .= '<div class="row">';	
+		
+		$contentOutput .= '  <div class="col-xs-12 col-md-6">'; 			
+		$contentOutput .= '    <div class="lndtext">';	
+		$contentOutput .= '      <span>'.$landingSummary.'</span>';
+		$contentOutput .= '    </div>';
+		$contentOutput .= '  </div>';		
+		
+		$contentOutput .= '  <div class="col-xs-12 col-md-6">';	
+		$contentOutput .= '    <div class="masonry-grid">'.$landingBoxContent.'</div>';
+		$contentOutput .= '  </div>'; 
+		
+		$contentOutput .= '</div>';
+		/* ---------------------------------------------------------------------------------- */
+		/* END compile page content */
+		/* ---------------------------------------------------------------------------------- */
+
+		mysqli_close($databaseConnection);	
+		return $contentOutput;
+	}
+/* ---------------------------------------------------------------------------------- */
+/*  END function outputLandingContent() */
+/* ******************************************************************************************************************************************************************************************* */ 	
+
+/* ******************************************************************************************************************************************************************************************* */
+/* ******************************************************************************************************************************************************************************************* */
+	function outputNexusContent($nexusId) {
+/* ---------------------------------------------------------------------------------- */
+		$projectImageFilesDirectory = 'images/projects/';	
+		$databaseConnection = mysqli_connect("localhost", "********************", "********************", "********************") or die("Some error occurred during connection ".mysqli_error($databaseConnection));
+
+		/* ---------------------------------------------------------------------------------- */
+		/* START compile landing box content and general page content                         */
+		/* category 1 = design                                                                */
+		/* category 2 = development                                                           */
+		/* category 3 = photography                                                           */		
+		/* category 4 = general                                                               */
+		/* ---------------------------------------------------------------------------------- */
+		$contentOutput = '';
+		$nexusBoxContent = '';
+		$nexusSubheader = '';
+		$nexusSummary = '';
+		$nexusQuery = '';
+		$nexusQueryResults = '';
+		$nexusQueryResultsCount = 0;
+		$projectCount = 0;
+		
+		$nexusArray_des[] = array();
+		$nexusArray_dev[] = array();
+		$nexusArray_pho[] = array();
+		$nexusArray_gen[] = array();
+
+		switch ($nexusId) {
+			case 115: // projects	
+				$nexusSubheader = 'projects';
+				$nexusSummary = 'Throughout all of the project work that I have been a part of, including various collaborations and contributions, I have utilized a variety of tools, platforms and applications to complete these tasks, including those listed below. Part of the purpose of this web site is to provide a basic content management system (CMS) to store images, notes or details related to these projects, and to list the multiple disciplines brought together that were used in their completion.<br /><br />Each box below links to a subject area landing page, which may also include additional subject information (or a default generic content placeholder), and links to related project highlights, images, notes or other project information. Touch or hover over each item to expand the box and highlight the subject area. A plus sign in the upper right hand corner indicates additional subject related projects and related information are available.<br /><br />As this is not necessarily a comprehensive and complete list, ongoing additions and updates to projects related to the tools, platforms and applications listed below are included periodically, as new projects are completed and prior projects documented in additional detail.';
+				$nexusQuery = 'SELECT s.id AS subject_id, 
+								    s.subject_name, 
+									s.category_id, 
+									s.category_background_color, 
+									s.box_size,
+									COUNT(ps.project_id) AS project_count
+							   FROM ********** AS s 
+							   LEFT JOIN ********** AS ps
+							   ON s.id = ps.subject_id                                 
+                               WHERE ((s.category_id = 1) OR (s.category_id = 2) OR (s.category_id = 3) OR (s.category_id = 4))
+                               GROUP BY s.id
+                               ORDER BY s.category_id';
+				break;
+			case 116: // portfolio
+				$nexusSubheader = 'portfolio';
+				$nexusSummary = 'Links to selected highlights of various contributions, collaborations and project work that I have been a part of are included below, integrating technical and creative experience utilizing a diverse array of tools and skills, on a variety of platforms.<br /><br />Each box below links to a subject area landing page, which may also include additional subject information (or a default generic content placeholder), and links to related project highlights, images, notes or other project information. Touch or hover over each item to expand the box and highlight the subject area. A plus sign in the upper right hand corner indicates additional subject related projects and related information are available.<br /><br />While this is not an all encompassing list, this content collectively serves as an online portfolio, with additions and updates to the subject areas, projects, images, notes and information included periodically as new works are completed and prior works documented in more detail.';
+				$nexusQuery = 'SELECT s.id AS subject_id, 
+								    s.subject_name, 
+									s.category_id, 
+									s.category_background_color, 
+									s.box_size,
+									COUNT(ps.project_id) AS project_count
+							   FROM ********** AS s 
+							   LEFT JOIN ********** AS ps
+							   ON s.id = ps.subject_id                                 
+                               WHERE ((s.category_id = 1) OR (s.category_id = 2) OR (s.category_id = 3) OR (s.category_id = 4))
+                               GROUP BY s.id
+                               ORDER BY s.category_id';
+				break;
+			case 117: // experience	
+				$nexusSubheader = 'experience';
+				$nexusSummary = 'With the experience I have gained working in a number of subject areas, including those listed below, I have had the opportunity to utilize a variety of tools, platforms and applications. One purpose of this web site is to create a growing repository of this collective experience, enumerating each subject area and storing related notes and information.<br /><br />Each box below links to a subject area landing page, which may also include additional subject information, and links to any related project work experience. Touch or hover over each item to expand the box and highlight the subject area. A plus sign in the upper right hand corner indicates additional subject related projects and related information are available.<br /><br />Ongoing additions and periodic updates to the growing list of subject areas are made as this experience continues to expand and additional details added to the database.';
+				$nexusQuery = 'SELECT s.id AS subject_id, 
+								    s.subject_name, 
+									s.category_id, 
+									s.category_background_color, 
+									s.box_size,
+									COUNT(ps.project_id) AS project_count
+							   FROM ********** AS s 
+							   LEFT JOIN ********** AS ps
+							   ON s.id = ps.subject_id                                 
+                               WHERE ((s.category_id = 1) OR (s.category_id = 2) OR (s.category_id = 3) OR (s.category_id = 4))
+                               GROUP BY s.id
+                               ORDER BY s.category_id';
+				break;
+			case 119: // resume		
+				$nexusSubheader = 'resume';
+				$nexusSummary = 'General information on current and prior experience, and some of the tools and skills engaged for clients and employers as a part of my work, is available through my profile on <a href="http://www.linkedin.com/in/johnheidajunior" target="_blank">Linked In</a>. (Link URL: <a href="http://www.linkedin.com/in/johnheidajunior" target="_blank">www.linkedin.com/in/johnheidajunior</a>; a Linked In account is required for full access.) Additional information on specific skillsets employed and work completed in a subject area not listed here is available upon request. (Please refer to the contact page for more details; link URL: <a href="contact.php" target="_self">www.johnheidajunior.com/contact.php</a>)<br /><br />Resume content provided as a part of an employment application is an addendum to the overall content contained on this web site, as well as the <a href="www.linkedin.com/in/johnheidajunior" target="_blank">profile information included on Linked In</a>, and may contain additional information specific to job requirements and updated experience on tools, platforms and applications.';
+				$nexusQuery = 'SELECT s.id AS subject_id, 
+				                    s.subject_name, 
+									s.category_id, 
+									s.category_background_color, 
+									s.box_size
+		                       FROM ********** s 
+							   WHERE ((s.category_id = 1) OR (s.category_id = 2) OR (s.category_id = 3) OR (s.category_id = 4))
+							   AND (s.category_background_color = 1)
+		                       ORDER BY RAND()';
+				break;
+			case 121: // about	
+				$nexusSubheader = 'about';
+				$nexusSummary = 'This web site is a work in progress, a combination of data and design, a repository of samples and information, designed to provide an overall framework of skills and experience accumulated. As a part of this concept, links included on the home landing page for "projects", "portfolio" and "experience" all coalesce to a web page nexus and visual representation of major and minor subject areas, tools, platforms and applications that I have worked with. Additional subject areas, images, information and highlights from prior projects are added periodically, often after being rediscovered through new project work or documentation found from previous work.<br /><br />The overall structure of the web site is relatively simple and easy to maintain. A lightweight base of PHP, HTML, HTML5, CSS, CSS3, Javascript and jQuery was used in the development of the web site, with minimal use of external third party script libraries to reduce loading and content delivery time. Data is served up by a MySQL database and SQL queries through six different tables, designed to conform to third normal form as closely as possible.<br /><br />Building out from the base colors used within the main name logo or wordmark, complimentary colors were selected to represent the major subject areas areas of <a href="www.johnheidajunior.com/nexus.php?n=109" target="_self">design</a> (<span class="text--des">orange</span>), <a href="www.johnheidajunior.com/nexus.php?n=110" target="_self">development</a> (<span class="text--dev">purple</span>), <a href="www.johnheidajunior.com/nexus.php?n=111" target="_self">photography</a> (<span class="text--pho">red</span>), along with a few other general items (<span class="text--gen">blue</span>). Three interlocking sizes of tiles were selected to prevent open gaps within the grid as much as possible. Animation and functionality of interactive tiles has been standardized as closely as possible between touch and click events, so as to provide a similar user experience between desktop, laptop, tablets and other mobile devices.';
+				$nexusQuery = 'SELECT s.id AS subject_id, 
+				                    s.subject_name, 
+									s.category_id, 
+									s.category_background_color, 
+									s.box_size
+		                       FROM ********** s 
+							   WHERE ((s.category_id = 1) OR (s.category_id = 2) OR (s.category_id = 3) OR (s.category_id = 4))
+							   AND (s.category_background_color = 1)
+		                       ORDER BY RAND()';
+				break;
+			case 200: // fair use / disclaimer	
+				$nexusSubheader = 'fair use/disclaimer';
+				$nexusSummary = 'This web site contains copyrighted material, the use of which has not always been specifically authorized by the copyright owner.  This material is included as a part of the personal online portfolio of John Heida, Jr. to illustrate examples of prior work and experience, in accordance with the "fair use" guidelines contained within Title U.S.C. Section 107 of the US Copyright Law.<br /><br />While a majority of the content contained on this site was created through my direct employment, contract or freelance work, many projects involved multiple talent where many individual contributions were employed to realize a successful project fulfillment. Collaborations are noted as much as possible however, often these contributions overlap original work completed by others or appended to through additional project work. Further details on the specific contributions on these collaborations are available upon request. (Please refer to the contact page for more details; link URL: <a href="www.johnheidajunior.com/contact.php" target="_self">www.johnheidajunior.com/contact.php</a>)';
+				$nexusQuery = 'SELECT s.id AS subject_id, 
+				                    s.subject_name, 
+									s.category_id, 
+									s.category_background_color, 
+									s.box_size
+		                       FROM ********** s 
+							   WHERE ((s.category_id = 1) OR (s.category_id = 2) OR (s.category_id = 3) OR (s.category_id = 4))
+							   AND (s.category_background_color = 1)
+		                       ORDER BY RAND()';
+				break;
+			default:	
+				$nexusSubheader = 'projects, experience and portfolio';
+				$nexusSummary = 'Links to selected highlights of various project work and contributions are featured below, incorporating experience with a number of tools, platforms and applications.';
+				$nexusQuery = 'SELECT s.id AS subject_id, 
+				                    s.subject_name, 
+									s.category_id, 
+									s.category_background_color, 
+									s.box_size
+		                       FROM ********** s 
+							   WHERE ((s.category_id = 1) OR (s.category_id = 2) OR (s.category_id = 3) OR (s.category_id = 4))
+		                       ORDER BY s.category_id';
+				break;
+		}	
+		
+		$nexusQueryResults = mysqli_query($databaseConnection, $nexusQuery);
+		$nexusQueryResultsCount = mysqli_num_rows($nexusQueryResults);
+
+		if ($nexusQueryResultsCount > 0) {
+			
+			while ($row_nexusQueryResults = mysqli_fetch_assoc($nexusQueryResults)) {
+				
+				switch ($row_nexusQueryResults['category_id']) {	
+					case 1:				
+						$nexusArray_des[] = array('subjectId' => $row_nexusQueryResults['subject_id'], 
+                                                  'subjectName' => $row_nexusQueryResults['subject_name'], 
+                                                  'useCategoryBackground' => $row_nexusQueryResults['category_background_color'], 
+												  'categoryPrefix' => 'des',
+                                                  'boxSize' => $row_nexusQueryResults['box_size'],
+												  'projectCount' => $row_nexusQueryResults['project_count']);
+						break;
+					case 2:
+						$nexusArray_dev[] = array('subjectId' => $row_nexusQueryResults['subject_id'], 
+                                                  'subjectName' => $row_nexusQueryResults['subject_name'], 
+                                                  'useCategoryBackground' => $row_nexusQueryResults['category_background_color'], 
+												  'categoryPrefix' => 'dev',
+                                                  'boxSize' => $row_nexusQueryResults['box_size'],
+												  'projectCount' => $row_nexusQueryResults['project_count']);
+						break;
+					case 3:
+						$nexusArray_pho[] = array('subjectId' => $row_nexusQueryResults['subject_id'], 
+                                                  'subjectName' => $row_nexusQueryResults['subject_name'], 
+                                                  'useCategoryBackground' => $row_nexusQueryResults['category_background_color'], 
+												  'categoryPrefix' => 'pho',
+                                                  'boxSize' => $row_nexusQueryResults['box_size'],
+												  'projectCount' => $row_nexusQueryResults['project_count']);
+						break;
+					case 4:
+						$nexusArray_gen[] = array('subjectId' => $row_nexusQueryResults['subject_id'], 
+                                                  'subjectName' => $row_nexusQueryResults['subject_name'], 
+                                                  'useCategoryBackground' => $row_nexusQueryResults['category_background_color'], 
+												  'categoryPrefix' => 'gen',
+                                                  'boxSize' => $row_nexusQueryResults['box_size'],
+												  'projectCount' => $row_nexusQueryResults['project_count']);
+						break;
+				}
+
+			}	
+			
+			mysqli_free_result($nexusQueryResults);			
+			
+			$nexusArray = array_merge($nexusArray_des, $nexusArray_dev, $nexusArray_pho, $nexusArray_gen);
+
+			/* START create color box */			
+			$currentGridItemClass = '';
+			$currentGridItemTextWLB = '';
+			$keyArray = array();
+			$rowArray = array(); 
+
+			foreach ($nexusArray as $keyArray => $rowArray) {
+				
+				if (strtolower($rowArray['subjectName']) == '') { // to temp remove extra elements added in by merge
+					
+				} else {
+							
+					switch ($rowArray['boxSize']) {
+						case 1:			
+							$currentGridItemClass = 'grid-item gi--sma';
+							break;
+						case 2:
+							$currentGridItemClass = 'grid-item gi--med';					
+							break;
+						case 3:
+							$currentGridItemClass = 'grid-item gi--lar';					
+							break;
+						case 4:
+							$currentGridItemClass = 'grid-item gi--sup';					
+							break;
+					}
+			
+					if ($rowArray['useCategoryBackground'] == 1) {
+						$currentGridItemClass .= ' gi--'.$rowArray['categoryPrefix'].'-alt';
+					} else {
+						$currentGridItemClass .= ' gi--'.$rowArray['categoryPrefix'];
+					}
+					
+					$currentGridItemTextWLB = str_replace(' ', '<br />', strtolower($rowArray['subjectName']));
+			
+					$nexusBoxContent .= '<div class="'.$currentGridItemClass.'" unselectable="on">';						
+					
+					$nexusBoxContent .= '<div class="grid-item-color-box">';			
+					$nexusBoxContent .= '<div class="grid-item-text-box">'.$currentGridItemTextWLB.'</div>';		
+					$nexusBoxContent .= '</div>';	
+					
+					$nexusBoxContent .= '<a href="subject.php?s='.$rowArray['subjectId'].'" title="'.$rowArray['subjectName'].'" tabindex="0">';
+					
+					$nexusBoxContent .= '<div class="linkbox"><span class="sr-only">Open '.$rowArray['subjectName'].' related projects.</span></div>';
+					
+					$nexusBoxContent .= '</a>';
+					$nexusBoxContent .= '<div class="closebox"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Close '.$rowArray['subjectName'].' projects link box.</span></div>';
+					
+					
+					if ($rowArray['projectCount'] > 0) {
+						$nexusBoxContent .= '<div class="contentindicatorbox"><span class="glyphicon glyphicon-plus"></span><span class="sr-only">Open link box for related '.$rowArray['subjectName'].' content.</span></div>';
+					} else {
+						$nexusBoxContent .= '<div class="contentindicatorbox"><span class="sr-only">No '.$rowArray['subjectName'].' related projects are currently available.</span></div>';
+					}
+					
+					
+					$nexusBoxContent .= '<div class="bkgndbox"></div>';
+					
+					$nexusBoxContent .= '</div>';				
+				}
+			}
+			/* END create color box */
+			
+			$contentOutput .= '<div class="row">';	
+			
+			$contentOutput .= '  <div class="col-xs-12 col-md-12 col-lg-12">';	
+			$contentOutput .= '    <div class="nexus-summary">';	
+			$contentOutput .= '      <span class="subheader firstsub">'.$nexusSubheader.'</span>';
+			$contentOutput .= '      <p>'.$nexusSummary.'</p>';
+			$contentOutput .= '    </div>';
+			$contentOutput .= '  </div>';
+			
+			$contentOutput .= '  <div class="col-xs-12 col-md-12 col-lg-12">';	
+			$contentOutput .= '    <div class="nexus-resources">';
+			$contentOutput .= '      <div class="nexus-resource-boxes">';	
+			$contentOutput .= '        <div class="masonry-grid">'.$nexusBoxContent.'</div>';
+			$contentOutput .= '      </div>';
+			$contentOutput .= '    </div>';		
+			$contentOutput .= '  </div>'; 
+			
+			$contentOutput .= '</div>';
+			
+		} else {	
+		
+			$contentOutput .= '<div class="row">';	
+
+			$contentOutput .= '  <div class="col-xs-12 col-md-12 col-lg-12">';	
+			$contentOutput .= '    <div class="nexus-summary">';	
+			$contentOutput .= '      <span class="subheader firstsub">'.$nexusSubheader.'</span>';
+			$contentOutput .= '      <p>'.$nexusSummary.'</p>';
+			$contentOutput .= '    </div>';
+			$contentOutput .= '  </div>';
+			
+			$contentOutput .= '  <div class="noresources"></div>';	
+			
+			$contentOutput .= '</div>';
+		
+		}
+		/* ---------------------------------------------------------------------------------- */
+		/* END compile subject box content and general page content */
+		/* ---------------------------------------------------------------------------------- */		
+		
+		mysqli_close($databaseConnection);	
+		return $contentOutput;
+	}
+/* ---------------------------------------------------------------------------------- */
+/*  END function outputNexusContent($nexusId) */
+/* ******************************************************************************************************************************************************************************************* */
+
+/* ******************************************************************************************************************************************************************************************* */
+/* ******************************************************************************************************************************************************************************************* */
+	function outputSubjectContent($subjectId) {
+/* ---------------------------------------------------------------------------------- */
+		$projectImageFilesDirectory = 'images/projects/';	
+		$databaseConnection = mysqli_connect("localhost", "********************", "********************", "********************") or die("Some error occurred during connection ".mysqli_error($databaseConnection));
+
+		/* ---------------------------------------------------------------------------------- */
+		/* START compile subject box content and store category name */
+		/* ---------------------------------------------------------------------------------- */
+		$subjectBoxContent = '';
+		$subjectName = '';
+		$subjectNameText = '';
+		$subjectSummary = '';
+		$categoryName = '';
+
+		$subjectQuery = '
+		SELECT s.id AS subject_id, 
+		       s.subject_name, 
+			   s.maintain_capitalization_flag, 
+			   s.subject_summary, 
+			   s.category_id, 
+			   s.category_background_color, 
+			   s.box_size,
+			   c.category_name, 
+			   c.category_prefix
+		FROM ********** s 	
+		  LEFT JOIN ********** c
+			ON s.category_id = c.id
+		WHERE s.id = '.$subjectId;
+	
+		$subjectQueryResults = mysqli_query($databaseConnection, $subjectQuery);
+		
+		if (mysqli_num_rows($subjectQueryResults) > 0) {
+			
+			while ($row_subjectQueryResults = mysqli_fetch_assoc($subjectQueryResults)) {
+				$subjectArray[] = array('subjectId' => $row_subjectQueryResults['subject_id'], 
+										'subjectName' => $row_subjectQueryResults['subject_name'], 		
+										'subjectMaintainCapitalization' => $row_subjectQueryResults['maintain_capitalization_flag'],	
+										'subjectSummary' => $row_subjectQueryResults['subject_summary'],
+									    'useCategoryBackground' => $row_subjectQueryResults['category_background_color'], 
+										'boxSize' => $row_subjectQueryResults['box_size'],
+									    'categoryName' => $row_subjectQueryResults['category_name'], 
+										'categoryPrefix' => $row_subjectQueryResults['category_prefix']);			
+			}	
+			mysqli_free_result($subjectQueryResults);
+			
+			$categoryName = $subjectArray[0]['categoryName'];
+			$subjectName = $subjectArray[0]['subjectName'];
+				
+			if ($subjectArray[0]['subjectMaintainCapitalization'] == 1) {
+				$subjectNameText = $subjectArray[0]['subjectName'];
+			} else {
+				$subjectNameText = strtolower($subjectArray[0]['subjectName']);
+			}
+
+			if ($subjectArray[0]['subjectSummary'] == '') {
+				
+				if ($subjectName != $categoryName) {
+
+					switch ($subjectArray[0]['categoryPrefix']) {
+						case 'pho':			
+							$subjectSummary = 'This page features links to '.strtolower($categoryName).' related projects with '.$subjectNameText.' as the main subject matter.';
+							break;
+						case 'gen':	
+							$subjectSummary = 'This page features links to '.strtolower($categoryName).' projects and contributions, incorporating various levels of experience utilizing '.$subjectNameText.'.';
+							break;
+						case 'des':	
+							$subjectSummary = 'This page features links to '.strtolower($categoryName).' related projects and contributions, incorporating various levels of experience utilizing '.$subjectNameText.'.';
+							break;
+						case 'dev':	
+							$subjectSummary = 'This page features links to '.strtolower($categoryName).' related projects and contributions, incorporating various levels of experience utilizing '.$subjectNameText.'.';
+							break;
+						default:	
+							$subjectSummary = 'This page features links to '.strtolower($categoryName).' related projects and contributions.';
+							break;
+					}
+				
+				} else {
+					
+					switch ($subjectArray[0]['categoryPrefix']) {
+						case 'pho':			
+							$subjectSummary = 'This page features links to various '.strtolower($categoryName).' related projects.';
+							break;
+						case 'gen':	
+							$subjectSummary = 'This page features links to a number of '.strtolower($categoryName).' projects and contributions.';
+							break;
+						case 'des':	
+							$subjectSummary = 'This page features links to '.strtolower($categoryName).' related projects and contributions, incorporating various levels of experience utilizing related tools and applications.';
+							break;
+						case 'dev':	
+							$subjectSummary = 'This page features links to '.strtolower($categoryName).' projects and contributions, incorporating various levels of experience utilizing related tools, applications and platforms.';
+							break;
+						default:	
+							$subjectSummary = $subjectArray[0]['categoryPrefix'].$subjectName.$categoryName.'This page features links to '.strtolower($categoryName).' related projects and contributions.';
+							break;
+					}
+					
+				}
+	
+			} else {
+				$subjectSummary = $subjectArray[0]['subjectSummary'];
+			}
+			
+			/* START create color box */
+			$currentGridItemClass = '';
+			$currentGridItemTextWLB = '';
+			$keyArray = array();
+			$rowArray = array();
+			
+			foreach ($subjectArray as $keyArray => $rowArray) {
+
+				switch ($rowArray['boxSize']) {
+					case 1:			
+						$currentGridItemClass = 'grid-item gi--sma';
+						break;
+					case 2:
+						$currentGridItemClass = 'grid-item gi--med';					
+						break;
+					case 3:
+						$currentGridItemClass = 'grid-item gi--lar';					
+						break;
+					case 4:
+						$currentGridItemClass = 'grid-item gi--sup';					
+						break;
+				}			
+		
+				if ($rowArray['useCategoryBackground'] == 1) {
+					$currentGridItemClass .= ' gi--'.$rowArray['categoryPrefix'].'-alt';
+				} else {
+					$currentGridItemClass .= ' gi--'.$rowArray['categoryPrefix'];
+				}
+				
+				$currentGridItemTextWLB = str_replace(' ', '<br />', strtolower($rowArray['subjectName']));
+		
+				$subjectBoxContent .= '<div class="'.$currentGridItemClass.'" unselectable="on">';			
+				$subjectBoxContent .= '<div class="grid-item-color-box">';			
+				$subjectBoxContent .= '<div class="grid-item-text-box">'.$currentGridItemTextWLB.'</div>';		
+				$subjectBoxContent .= '</div>';	
+				
+				$subjectBoxContent .= '<a href="subject.php?s='.$rowArray['subjectId'].'" title="'.$rowArray['subjectName'].'" tabindex="0">';
+				
+				$subjectBoxContent .= '<div class="linkbox"><span class="sr-only">Open '.$rowArray['subjectName'].' related projects.</span></div>';
+				$subjectBoxContent .= '</a>';
+				$subjectBoxContent .= '<div class="closebox"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Close '.$rowArray['subjectName'].' projects link box.</span></div>';
+				$subjectBoxContent .= '<div class="bkgndbox"></div>';
+				
+				$subjectBoxContent .= '</div>';
+			}
+			/* END create color box */
+			
+		} else {		
+		
+			$subjectBoxContent = 'No subject resources were found related to the selected subject.';	
+		}
+		/* ---------------------------------------------------------------------------------- */
+		/* END compile subject box content and store category name */
+		/* ---------------------------------------------------------------------------------- */
+
+		/* ---------------------------------------------------------------------------------- */
+		/* START compile category box content */
+		/* ---------------------------------------------------------------------------------- */
+		$categoryBoxContent = '';
+		
+		if ($subjectName != $categoryName) {
+			
+			$categoryQuery = '
+			SELECT s.id AS subject_id, 
+				   s.subject_name, 
+				   s.category_id, 
+				   s.category_background_color, 
+				   s.box_size,
+				   c.category_name, 
+				   c.category_prefix
+			FROM ********** s 	
+			  LEFT JOIN ********** c
+				ON s.category_id = c.id
+			WHERE s.subject_name = "'.$categoryName.'"';
+			
+			$categoryQueryResults = mysqli_query($databaseConnection, $categoryQuery);
+			
+			if (mysqli_num_rows($categoryQueryResults) > 0) {
+				
+				while ($row_categoryQueryResults = mysqli_fetch_assoc($categoryQueryResults)) {
+					$categoryArray[] = array('subjectId' => $row_categoryQueryResults['subject_id'], 
+											 'subjectName' => $row_categoryQueryResults['subject_name'], 
+											 'useCategoryBackground' => $row_categoryQueryResults['category_background_color'], 
+											 'boxSize' => $row_categoryQueryResults['box_size'],
+											 'categoryPrefix' => $row_categoryQueryResults['category_prefix']);
+				}					
+				mysqli_free_result($categoryQueryResults);
+		
+				/* START create color box */
+				$currentGridItemClass = '';
+				$currentGridItemTextWLB = '';
+				$keyArray = array();
+				$rowArray = array();
+				
+				foreach ($categoryArray as $keyArray => $rowArray) {			
+					$currentGridItemClass = 'grid-item gi--sup';
+			
+					if ($rowArray['useCategoryBackground'] == 1) {
+						$currentGridItemClass .= ' gi--'.$rowArray['categoryPrefix'].'-alt';
+					} else {
+						$currentGridItemClass .= ' gi--'.$rowArray['categoryPrefix'];
+					}
+					
+					$currentGridItemTextWLB = str_replace(' ', '<br />', strtolower($rowArray['subjectName']));
+			
+					$categoryBoxContent .= '<div class="'.$currentGridItemClass.'" unselectable="on">';			
+					$categoryBoxContent .= '<div class="grid-item-color-box">';			
+					$categoryBoxContent .= '<div class="grid-item-text-box">'.$currentGridItemTextWLB.'</div>';		
+					$categoryBoxContent .= '</div>';	
+					
+					$categoryBoxContent .= '<a href="subject.php?s='.$rowArray['subjectId'].'" title="'.$rowArray['subjectName'].'" tabindex="0">';
+					
+					$categoryBoxContent .= '<div class="linkbox"><span class="sr-only">Open '.$rowArray['subjectName'].' related projects.</span></div>';
+					$categoryBoxContent .= '</a>';
+					$categoryBoxContent .= '<div class="closebox"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Close '.$rowArray['subjectName'].' projects link box.</span></div>';
+					$categoryBoxContent .= '<div class="bkgndbox"></div>';
+					
+					$categoryBoxContent .= '</div>';
+				}
+				/* END create color box */
+				
+			} else {		
+			
+				$categoryBoxContent = 'No category resources were found related to the selected subject.';	
+			}
+			
+		}
+		/* ---------------------------------------------------------------------------------- */
+		/* END compile category box content */
+		/* ---------------------------------------------------------------------------------- */
+
+		/* ---------------------------------------------------------------------------------- */
+		/* START compile project image boxes and project information content */
+		/* ---------------------------------------------------------------------------------- */
+		$projectImageLinkBoxContent = '';
+		$lastProjectId = '';
+		
+		$projectImageLinkQuery = '
+		SELECT s.id AS subject_id, 
+		       s.subject_name, 
+			   s.category_id, 
+			   p.project_name, 
+			   p.project_title, 
+			   p.project_summary,
+               p.id AS project_id,
+               pi.image_thumb_filename, 
+			   pi.image_large_filename, 
+			   pi.image_caption
+          FROM ********** s
+            LEFT JOIN ********** ps 
+              ON s.id = ps.subject_id
+            LEFT JOIN ********** p 
+              ON ps.project_id = p.id
+            LEFT JOIN ********** pi 
+              ON p.id = pi.project_id
+        WHERE pi.image_thumb_filename IS NOT NULL
+          AND p.project_active_flag = 1 
+          AND s.id = '.$subjectId.'
+		ORDER BY pi.project_id ASC';
+		
+		$projectImageLinkQueryResults = mysqli_query($databaseConnection, $projectImageLinkQuery);
+		
+		if (mysqli_num_rows($projectImageLinkQueryResults) > 0) {
+			
+			while ($row_projectImageLinkQueryResults = mysqli_fetch_assoc($projectImageLinkQueryResults)) {
+				
+				// only use one image per project
+				if ($lastProjectId != $row_projectImageLinkQueryResults['project_id']) {
+					$projectImageLinkArray[] = array('imageThumbFilename' => $row_projectImageLinkQueryResults['image_thumb_filename'],
+													 'imageLargeFilename' => $row_projectImageLinkQueryResults['image_large_filename'],
+													 'imageCaption' => $row_projectImageLinkQueryResults['image_caption'], 
+													 'projectId' => $row_projectImageLinkQueryResults['project_id'],
+													 'projectName' => $row_projectImageLinkQueryResults['project_name'],
+													 'projectTitle' => $row_projectImageLinkQueryResults['project_title']);
+				}
+				$lastProjectId = $row_projectImageLinkQueryResults['project_id'];			
+			}					
+			mysqli_free_result($projectImageLinkQueryResults);
+			
+			/* START create project image link box */
+			$currentGridItemClass = '';
+			$keyArray = array();
+			$rowArray = array();
+			
+			foreach ($projectImageLinkArray as $keyArray => $rowArray) {			
+				$currentGridItemClass = 'grid-item gi--lar';
+
+				$projectImageLinkBoxContent .= '<div class="'.$currentGridItemClass.'" unselectable="on">';			
+				$projectImageLinkBoxContent .= '<a href="project.php?p='.$rowArray['projectId'].'" title="'.$rowArray['projectTitle'].'" tabindex="0">';				
+				$projectImageLinkBoxContent .= '<div class="linkbox"><span class="sr-only">Open '.$subjectName.' related project '.$rowArray['projectTitle'].'.</span></div>';
+				$projectImageLinkBoxContent .= '</a>';		
+				$projectImageLinkBoxContent .= '<div class="closebox"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Close '.$subjectName.' related project link box.</span></div>';
+				$projectImageLinkBoxContent .= '<div class="bkgndbox"><img src="'.$projectImageFilesDirectory.$rowArray['imageThumbFilename'].'" /></div>';				
+				$projectImageLinkBoxContent .= '</div>';	
+			}
+			/* END create project image link box */
+
+		} else {	
+		
+			$projectImageLinkBoxContent = 'No project images were found related to the selected subject.';	
+		}
+		/* ---------------------------------------------------------------------------------- */
+		/* END compile project image boxes and project information content */
+		/* ---------------------------------------------------------------------------------- */
+		
+		/* ---------------------------------------------------------------------------------- */
+		/* START compile page content */
+		/* ---------------------------------------------------------------------------------- */
+		$contentOutput = '';
+		
+		$contentOutput .= '<div class="row">';	
+		
+		$contentOutput .= '  <div class="col-xs-12 col-md-12 col-lg-5">'; 
+		$contentOutput .= '    <div class="subject-title">';	
+		$contentOutput .= '      <span class="subheader firstsub">Subject</span>';
+		$contentOutput .= '      <h1>'.$subjectName.'</h1>';
+		$contentOutput .= '    </div>';	
+		$contentOutput .= '    <div class="subject-resources">';	
+		$contentOutput .= '      <div class="subject-resource-boxes">';		
+		$contentOutput .= '        <div class="masonry-grid">'.$categoryBoxContent.$subjectBoxContent.'</div>';
+		$contentOutput .= '      </div>';
+		$contentOutput .= '    </div>';	
+		$contentOutput .= '    <div class="subject-summary">';	
+		$contentOutput .= '      <span class="subheader">Subject notes</span>';
+		$contentOutput .= '      <p>'.$subjectSummary.'</p>';
+		$contentOutput .= '    </div>';
+		$contentOutput .= '  </div>';		
+		
+		$contentOutput .= '  <div class="col-xs-12 col-md-12 col-lg-6 col-lg-offset-1">';	
+		$contentOutput .= '    <span class="subheader firstsub colwrap">Subject related projects</span>';
+		$contentOutput .= '    <div class="project-image-boxes">';	
+		$contentOutput .= '      <div class="masonry-grid">'.$projectImageLinkBoxContent.'</div>';
+		$contentOutput .= '    </div>';
+		$contentOutput .= '  </div>'; 
+		
+		$contentOutput .= '</div>';	
+		/* ---------------------------------------------------------------------------------- */
+		/* END compile page content */
+		/* ---------------------------------------------------------------------------------- */
+		
+		mysqli_close($databaseConnection);	
+		return $contentOutput;
+	}
+/* ---------------------------------------------------------------------------------- */
+/*  END function outputSubjectContent($subjectId) */
+/* ******************************************************************************************************************************************************************************************* */
+	
+/* ******************************************************************************************************************************************************************************************* */
+/* ******************************************************************************************************************************************************************************************* */
+	function outputProjectContent($projectId) {
+/* ---------------------------------------------------------------------------------- */
+		$projectImageFilesDirectory = 'images/projects/';	
+		$databaseConnection = mysqli_connect("localhost", "********************", "********************", "********************") or die("Some error occurred during connection ".mysqli_error($databaseConnection));
+
+		/* ---------------------------------------------------------------------------------- */
+		/* START compile project resource boxes content */
+		/* ---------------------------------------------------------------------------------- */
+		$projectSubjectsBoxContent = '';
+		
+		$projectSubjectsQuery = '
+		SELECT p.id AS project_id, 
+		       p.project_name, 
+			   p.project_title, 
+			   p.project_summary, 
+			   s.id AS subject_id, 
+			   s.subject_name, 
+			   s.category_id, 
+			   s.category_background_color, 
+			   s.box_size,
+			   c.category_prefix
+		FROM ********** p 
+		  LEFT JOIN ********** ps 
+			ON p.id = ps.project_id
+		  LEFT JOIN ********** s 
+			ON ps.subject_id = s.id		
+		  LEFT JOIN ********** c
+			ON s.category_id = c.id
+		WHERE p.project_active_flag = 1 
+		  AND p.id = '.$projectId.'
+		ORDER BY c.id ASC';
+	
+		$projectSubjectsQueryResults = mysqli_query($databaseConnection, $projectSubjectsQuery);
+		
+		if (mysqli_num_rows($projectSubjectsQueryResults) > 0) {
+			
+			while ($row_projectSubjectsQueryResults = mysqli_fetch_assoc($projectSubjectsQueryResults)) {
+				$projectSubjectsArray[] = array('subjectId' => $row_projectSubjectsQueryResults['subject_id'], 
+												'subjectName' => $row_projectSubjectsQueryResults['subject_name'], 
+									            'useCategoryBackground' => $row_projectSubjectsQueryResults['category_background_color'], 
+												'boxSize' => $row_projectSubjectsQueryResults['box_size'],
+									            'categoryPrefix' => $row_projectSubjectsQueryResults['category_prefix']);		
+			}	
+			
+			mysqli_free_result($projectSubjectsQueryResults);
+
+			/* START create color box */	
+			$currentGridItemClass = '';
+			$keyArray = array();
+			$rowArray = array();
+
+			foreach ($projectSubjectsArray as $keyArray => $rowArray) {				
+				$currentGridItemClass = 'grid-item gi--sma';
+	
+				if ($rowArray['useCategoryBackground'] == 1) {
+					$currentGridItemClass .= ' gi--'.$rowArray['categoryPrefix'].'-alt';
+				} else {
+					$currentGridItemClass .= ' gi--'.$rowArray['categoryPrefix'];
+				}
+				
+				$currentGridItemTextWLB = str_replace(' ', '<br />', strtolower($rowArray['subjectName']));
+	
+				$projectSubjectsBoxContent .= '<div class="'.$currentGridItemClass.'" unselectable="on">';			
+				$projectSubjectsBoxContent .= '<div class="grid-item-color-box">';			
+				$projectSubjectsBoxContent .= '<div class="grid-item-text-box">'.$currentGridItemTextWLB.'</div>';		
+				$projectSubjectsBoxContent .= '</div>';	
+				
+				$projectSubjectsBoxContent .= '<a href="subject.php?s='.$rowArray['subjectId'].'" title="'.$rowArray['subjectName'].'" tabindex="0">';
+				
+				$projectSubjectsBoxContent .= '<div class="linkbox"><span class="sr-only">Open '.$rowArray['subjectName'].' related projects.</span></div>';
+				$projectSubjectsBoxContent .= '</a>';
+				$projectSubjectsBoxContent .= '<div class="closebox"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Close '.$rowArray['subjectName'].' projects link box.</span></div>';
+				$projectSubjectsBoxContent .= '<div class="bkgndbox"></div>';
+				
+				$projectSubjectsBoxContent .= '</div>';
+			}	
+			/* END create color box */
+			
+		} else {	
+		
+			$projectSubjectsBoxContent = 'No project resources were found related to the selected project.';	
+		}
+		/* ---------------------------------------------------------------------------------- */
+		/* END compile project resource boxes content */
+		/* ---------------------------------------------------------------------------------- */
+		
+		/* ---------------------------------------------------------------------------------- */
+		/* START compile project image boxes and project information content */
+		/* ---------------------------------------------------------------------------------- */
+		$projectImageGalleryBoxContent = '';
+		$projectTitle = '';
+		$projectSummary = '';
+		
+		$projectImageGalleryQuery = '
+		SELECT pi.image_thumb_filename, 
+		       pi.image_large_filename, 
+			   pi.image_caption, 
+			   p.id AS project_id, 
+			   p.project_name, 
+			   p.project_title, 
+			   p.project_summary
+		FROM ********** p 
+		  LEFT JOIN ********** pi 
+            ON p.id = pi.project_id
+        WHERE p.project_active_flag = 1 
+          AND p.id = '.$projectId.'
+		ORDER BY pi.project_id ASC';
+
+		$projectImageGalleryQueryResults = mysqli_query($databaseConnection, $projectImageGalleryQuery);
+		
+		if (mysqli_num_rows($projectImageGalleryQueryResults) > 0) {
+			
+			while ($row_projectImageGalleryQueryResults = mysqli_fetch_assoc($projectImageGalleryQueryResults)) {
+				$projectImageGalleryArray[] = array('imageThumbFilename' => $row_projectImageGalleryQueryResults['image_thumb_filename'],
+													'imageLargeFilename' => $row_projectImageGalleryQueryResults['image_large_filename'], 
+													'imageCaption' => $row_projectImageGalleryQueryResults['image_caption'], 
+									                'projectName' => $row_projectImageGalleryQueryResults['project_name'],
+													'projectTitle' => $row_projectImageGalleryQueryResults['project_title'],
+													'projectSummary' => $row_projectImageGalleryQueryResults['project_summary']);
+			}					
+			mysqli_free_result($projectImageGalleryQueryResults);
+			
+			$projectTitle = $projectImageGalleryArray[0]['projectTitle'];
+			
+			if ($projectImageGalleryArray[0]['projectSummary'] == '') {
+				$projectSummary = 'This page features selected highlights of project work and contributions, incorporating experience with various tools and applications highlighted in the project resources area above.';
+			} else {
+				$projectSummary = $projectImageGalleryArray[0]['projectSummary'];
+			}	
+			
+			/* START create project image gallery box */
+			$currentGridItemClass = '';
+			$keyArray = array();
+			$rowArray = array();
+			
+			foreach ($projectImageGalleryArray as $keyArray => $rowArray) {			
+				$currentGridItemClass = 'grid-item gi--lar';
+
+				$projectImageGalleryBoxContent .= '<div class="'.$currentGridItemClass.'" unselectable="on">';					
+				$projectImageGalleryBoxContent .= '<a href="'.$projectImageFilesDirectory.$rowArray['imageLargeFilename'].'" title="'.$rowArray['imageCaption'].'" tabindex="0">';	
+				$projectImageGalleryBoxContent .= '<div class="linkbox"><span class="sr-only">View '.$rowArray['projectName'].' related image.</span></div>';
+				$projectImageGalleryBoxContent .= '</a>';
+				$projectImageGalleryBoxContent .= '<div class="closebox"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Close '.$rowArray['projectName'].' related image link box.</span></div>';
+				$projectImageGalleryBoxContent .= '<div class="bkgndbox"><img src="'.$projectImageFilesDirectory.$rowArray['imageThumbFilename'].'" /></div>';				
+				$projectImageGalleryBoxContent .= '</div>';	
+			}
+			/* END create project image gallery box */
+
+		} else {	
+			$projectImageGalleryBoxContent = 'No additional resources were found related to the selected project.';	
+		}
+		/* ---------------------------------------------------------------------------------- */
+		/* END compile project image boxes and project information content */
+		/* ---------------------------------------------------------------------------------- */
+
+		/* ---------------------------------------------------------------------------------- */
+		/* START compile page content */
+		/* ---------------------------------------------------------------------------------- */
+		$contentOutput = '';
+		
+		$contentOutput .= '<div class="row">';	
+		
+		$contentOutput .= '  <div class="col-xs-12 col-md-12 col-lg-5">'; 			
+		$contentOutput .= '    <div class="project-title">';	
+		$contentOutput .= '      <span class="subheader firstsub">Project</span>';
+		$contentOutput .= '      <h1>'.$projectTitle.'</h1>';
+		$contentOutput .= '    </div>';		
+		$contentOutput .= '    <div class="project-resources">';	
+		$contentOutput .= '      <span class="subheader">Project Resources</span>';
+		$contentOutput .= '      <div class="project-resource-boxes">';		
+		$contentOutput .= '        <div class="masonry-grid">'.$projectSubjectsBoxContent.'</div>';
+		$contentOutput .= '      </div>';
+		$contentOutput .= '    </div>';
+		$contentOutput .= '    <div class="project-summary">';	
+		$contentOutput .= '      <span class="subheader">Project Summary</span>';
+		$contentOutput .= '      <p>'.$projectSummary.'</p>';
+		$contentOutput .= '    </div>';
+		$contentOutput .= '  </div>';		
+		
+		$contentOutput .= '  <div class="col-xs-12 col-md-12 col-lg-6 col-lg-offset-1">';	
+		$contentOutput .= '    <span class="subheader firstsub colwrap">Project related bits and pieces</span>';
+		$contentOutput .= '    <div class="project-image-boxes">';	
+		$contentOutput .= '      <div class="masonry-grid">'.$projectImageGalleryBoxContent.'</div>';
+		$contentOutput .= '    </div>';
+		$contentOutput .= '  </div>'; 
+		
+		$contentOutput .= '</div>';
+		/* ---------------------------------------------------------------------------------- */
+		/* END compile page content */
+		/* ---------------------------------------------------------------------------------- */
+		
+		mysqli_close($databaseConnection);	
+		return $contentOutput;
+	}
+/* ---------------------------------------------------------------------------------- */
+/*  END function outputProjectContent($projectId) */
+/* ******************************************************************************************************************************************************************************************* */ 
+?>
