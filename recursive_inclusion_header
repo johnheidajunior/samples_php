@@ -1,0 +1,14 @@
+<?php
+session_start();
+error_reporting(E_ERROR | E_PARSE);
+date_default_timezone_set("Australia/Brisbane");
+
+include($_SERVER['DOCUMENT_ROOT']."/_classes/datetimeextended.php");
+include($_SERVER['DOCUMENT_ROOT']."/_classes/functions.php");
+include($_SERVER['DOCUMENT_ROOT']."/_classes/imageasset.php");
+include($_SERVER['DOCUMENT_ROOT']."/_classes/mailer.php");
+include($_SERVER['DOCUMENT_ROOT']."/_classes/validator.php");
+$_functions = new Functions();
+$_validator = new Validator();
+
+$now_dt = new DateTimeExtended();
