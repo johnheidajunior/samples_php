@@ -1,0 +1,603 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title><?php echo $accommodation_page_title ?></title>
+<meta name="keywords" content="<?php echo $accommodation_page_keywords ?>">
+<meta name="description" content="<?php echo $accommodation_page_description ?>">
+<meta name="location" content="<?php echo $accommodation_page_location ?>">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Content-Language" content="en-au">
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="c.css">
+<link rel="stylesheet" type="text/css" href="oasis.css">
+<link href="ddmenu.css" rel="stylesheet" type="text/css" />
+<script src="ddmenu.js" type="text/javascript"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+  ga('create', 'UA-5093556-1', 'downunderonline.com');
+  ga('send', 'pageview');
+ 
+</script>
+</head>
+<body class="body_events_canberra" topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0">
+
+<div align="center">
+	<table border="0" width="1050" cellspacing="0" cellpadding="0" height="144" class="credit">
+		<tr>
+			<td align="right" valign="bottom">
+			
+			<font face="Times New Roman">© </font>Tourism Australia</td>
+		</tr>
+	</table>
+	</div>
+	<div align="center">
+	<table border="0" width="1050" cellspacing="0" cellpadding="0" background="images/white.png">
+		<tr>
+			<td>
+			<table border="0" width="1050" cellspacing="0" cellpadding="0" height="25">
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+			
+			<div align="center">
+				<table border="0" width="1050" cellspacing="0" cellpadding="0">
+					<tr>
+						<td width="25">&nbsp;</td>
+						<td width="250">
+						<img border="0" src="images/logo_2013.png" width="250" height="61"></td>
+						<td>&nbsp;</td>
+						<td width="400" align="center"><h1 class="subheadbeige">
+						<font color="#2F2D2D">
+						<a href="http://www.downunderonline.com">
+						<font color="#2F2D2D"><?php echo $accommodation_page_header_link_text ?></font>
+						</a>
+						</font>
+						<br>
+						<?php echo $accommodation_page_header_line2_text ?><br>
+						<?php echo $accommodation_page_header_line3_text ?></h1></td>
+						<td width="25">&nbsp;</td>
+					</tr>
+				</table>
+				<table border="0" width="1050" cellspacing="0" cellpadding="0" height="25">
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+				<table border="0" width="1050" cellspacing="0" cellpadding="0">
+					<tr>
+						<td width="25">&nbsp;</td>
+						<td><nav id="ddmenu">
+    <ul>
+	<li><a href="http://www.downunderonline.com" title="Australian Accommodation and Travel Guide">
+	Home</a></li>        
+	<li><a href="#">Destinations Info</a>
+            <div class="dropToLeft">
+                <div class="column">
+                	<b>Australia</b>
+                	<a href="australia_overview_accommodation.htm" title="Australia Information Accommodation">
+					Australia Overview</a>
+                    <b>New South Wales</b>
+                    <a href="accommodation_info_new_south_wales.htm" title="New South Wales Accommodation Information">
+					New South Wales</a>
+                    <a href="accommodation_info_blue_mountains.htm" title="Blue Mountains Accommodation Information">
+					Blue Mountains</a>
+                    <a href="accommodation_info_hunter_valley.htm" title="Hunter Valley Accommodation Information">
+					Hunter Valley</a>
+                    <a href="accommodation_info_sydney.htm" title="Sydney Accommodation Information">
+					Sydney</a>
+                    <a href="accommodation_info_sydney_opera_house.htm" title="Sydney Opera House Accommodation Information">
+					Sydney Opera House</a>
+                    <a href="accommodation_info_byron_bay.htm" title="Byron Bay Accommodation Information">
+					Byron Bay</a>
+                    <a href="accommodation_info_coffs_harbour.htm" title="Coffs Harbour Accommodation Information">
+					Coffs Harbour</a>
+                    <b>ACT</b>
+					<a href="accommodation_info_australian_capital_territory.htm" title="Australian Capital Territory Accommodation Information">
+					ACT</a>
+                    <a href="accommodation_info_canberra.htm" title="Canberra Accommodation Information">
+					Canberra</a>
+                    <b>South Australia</b>
+					<a href="accommodation_info_south_australia.htm" title="South Australia Accommodation Information">
+					South Australia</a>
+                    <a href="accommodation_info_adelaide.htm" title="Adelaide Accommodation Information">
+					Adelaide</a>
+                    <a href="accommodation_info_barossa_valley.htm" title="Barossa Valley Accommodation Information">
+					Barossa Valley</a>
+                    <a href="accommodation_info_fleurieu_peninsula.htm" title="Fleurieu Peninsula Accommodation Information">
+					Fleurieu Peninsula</a>
+					<a href="accommodation_info_murray_river.htm" title="Murray River Accommodation Information">
+					Murray River</a>
+                </div>
+                <div class="column" style="width:2px;text-align:center;">
+                    <img src="images/divider.gif" style="width:2px; height:338px;" />                 
+                </div>
+                <div class="column">
+                    <b>Victoria</b>
+                    <a href="accommodation_info_victoria.htm" title="Victoria Accommodation Information">
+					Victoria</a>
+                    <a href="accommodation_info_melbourne.htm" title="Melbourne Accommodation Information">
+					Melbourne</a>
+                    <a href="accommodation_info_twelve_apostles.htm" title="Twelve Apostles Accommodation Information">
+					12 Apostles</a>
+                    <a href="accommodation_info_great_ocean_road.htm" title="Great Ocean Road Accommodation Information">
+					Great Ocean Road</a>
+                    <b>Western Australia</b>
+                    <a href="accommodation_info_western_australia.htm" title="Western Australia Accommodation Information">
+					Western Australia</a>
+                    <a href="accommodation_info_broome.htm" title="Broome Accommodation Information">
+					Broome</a>
+                    <a href="accommodation_info_fremantle.htm" title="Fremantle Accommodation Information">
+					Fremantle</a>
+                    <a href="accommodation_info_kangaroo_island.htm" title="Kangaroo Island Accommodation Information">
+					Kangaroo Island</a>
+                    <a href="accommodation_info_margaret_river.htm" title="Margaret River Accommodation Information">
+					Margaret River</a>
+                    <a href="accommodation_info_ningaloo_reef.htm" title="Ningaloo Reef Accommodation Information">
+					Ningaloo Reef</a>
+                    <a href="accommodation_info_perth.htm" title="Perth Accommodation Information">
+					Perth</a>
+                    <a href="accommodation_info_kimberleys.htm" title="The Kimberley Accommodation Information">
+					The Kimberley</a>
+                    <b>Tasmania</b>
+                    <a href="accommodation_info_tasmania.htm" title="Tasmania Accommodation Information">
+					Tasmania</a>
+                    <a href="accommodation_info_hobart.htm" title="Hobart Accommodation Information">
+					Hobart</a>                                       
+                </div>
+                <div class="column" style="width:2px;text-align:center;">
+                    <img src="images/divider.gif" style="width:2px; height:338px;" />                 
+                </div>
+                <div class="column">
+                    <b>Queensland</b>
+                    <a href="accommodation_info_queensland.htm" title="Queensland Accommodation Information">
+					Queensland</a>
+                    <a href="accommodation_info_airlie_beach.htm" title="Airlie Beach Accommodation Information">
+					Airlie Beach</a>
+                    <a href="accommodation_info_atherton_tablelands.htm" title="Atherton Tablelands Accommodation Information">
+					Atherton Tablelands</a>
+                    <a href="accommodation_info_brisbane.htm" title="Brisbane Accommodation Information">
+					Brisbane</a>
+                    <a href="accommodation_info_broadbeach.htm" title="Broadbeach Accommodation Information">
+					Broadbeach</a>
+                    <a href="accommodation_info_bundaberg.htm" title="Bundaberg Accommodation Information">
+					Bundaberg</a>
+                    <a href="accommodation_info_burleigh_heads.htm" title="Burleigh Heads Accommodation Information">
+					Burleigh Heads</a>
+                    <a href="accommodation_info_cairns.htm" title="Cairns Accommodation Information">
+					Cairns</a>
+                    <a href="accommodation_info_cairns_northern_beaches.htm" title="Cairns Northern Beaches Accommodation Information">
+					Cairns Beaches</a>
+                    <a href="accommodation_info_caloundra.htm" title="Caloundra Accommodation Information">
+					Caloundra</a>
+                    <a href="accommodation_info_cape_tribulation.htm" title="Cape Tribulation Accommodation Information">
+					Cape Tribulation</a>
+                    <a href="accommodation_info_cape_york.htm" title="Cape York Accommodation Information">
+					Cape York</a>
+                    <a href="accommodation_info_clifton_beach.htm" title="Clifton Beach Accommodation Information">
+					Clifton Beach</a>
+                    <a href="accommodation_info_coolangatta.htm" title="Coolangatta Accommodation Information">
+					Coolangatta</a>
+                    <a href="accommodation_info_coolum_beach.htm" title="Coolum Beach Accommodation Information">
+					Coolum Beach</a>
+                    <a href="accommodation_info_daintree.htm" title="Daintree Accommodation Information">
+					Daintree</a>
+                    <a href="accommodation_info_fraser_coast.htm" title="Fraser Coast Accommodation Information">
+					Fraser Coast</a>
+                    <a href="accommodation_info_fraser_island.htm" title="Fraser Island Accommodation Information">
+					Fraser Island</a>
+                    <a href="accommodation_info_gold_coast.htm" title="Gold Coast Accommodation Information">
+					Gold Coast</a>
+                    
+
+                </div>
+                <div class="column" style="width:2px;text-align:center;">
+                    <img src="images/divider.gif" style="width:2px; height:338px;" />                 
+                </div>
+                <div class="column">
+                    <b>Queensland</b>
+                    <a href="accommodation_info_great_barrier_reef.htm" title="Great Barrier Reef Accommodation Information">
+					Great Barrier Reef</a>
+                    <a href="accommodation_info_hervey_bay.htm" title="Hervey Bay Accommodation Information">
+					Hervey Bay</a>
+                    <a href="accommodation_info_mackay.htm" title="Mackay Accommodation Information">
+					Mackay</a>
+                    <a href="accommodation_info_magnetic_island.htm" title="Magnetic Island Accommodation Information">
+					Magnetic Island</a>
+                    <a href="accommodation_info_main_beach.htm" title="Main Beach Accommodation Information">
+					Main Beach</a>
+                    <a href="accommodation_info_maroochydore.htm" title="Maroochydore Accommodation Information">
+					Maroochydore</a>
+                    <a href="accommodation_info_mission_beach.htm" title="Mission Beach Accommodation Information">
+					Mission Beach</a>
+                    <a href="accommodation_info_mooloolaba.htm" title="Mooloolaba Accommodation Information">
+					Mooloolaba</a>
+                    <a href="accommodation_info_noosa.htm" title="Noosa Accommodation Information">
+					Noosa</a>
+                    <a href="accommodation_info_oak_beach.htm" title="Oak Beach Accommodation Information">
+					Oak Beach</a>
+                    <a href="accommodation_info_palm_cove.htm" title="Palm Cove Accommodation Information">
+					Palm Cove</a>
+                    <a href="accommodation_info_port_douglas.htm" title="Port Douglas Accommodation Information">
+					Port Douglas</a>
+                    <a href="accommodation_info_sunshine_coast.htm" title="Sunshine Coast Accommodation Information">
+					Sunshine Coast</a>
+                    <a href="accommodation_info_surfers_paradise.htm" title="Surfers Paradise Accommodation Information">
+					Surfers Paradise</a>
+                    <a href="accommodation_info_townsville.htm" title="Townsville Accommodation Information">
+					Townsville</a>
+                    <a href="accommodation_info_trinity_beach.htm" title="Trinity Beach Accommodation Information">
+					Trinity Beach</a>
+                    <a href="accommodation_info_tropical_north_queensland.htm" title="Tropical North Queensland Accommodation Information">
+					Tropical North QLD</a>
+                    <a href="accommodation_info_yorkeys_knob.htm" title="Yorkeys Knob Accommodation Information">
+					Yorkeys Knob</a>
+                    <a href="accommodation_info_whitsundays.htm" title="Whitsundays Accommodation Information">
+					Whitsundays</a>
+                </div>
+                <div class="column" style="width:2px;text-align:center;">
+                    <img src="images/divider.gif" style="width:2px; height:338px;" />                 
+                </div>
+                <div class="column">
+                    <b>Northern Territory</b>
+                    <a href="accommodation_info_northern_territory.htm" title="Northern Territory Accommodation Information">
+					Northern Territory</a>
+                    <a href="accommodation_info_alice_springs.htm" title="Alice Springs Accommodation Information">
+					Alice Springs</a>
+                    <a href="accommodation_info_ayers_rock.htm" title="Ayers Rock Accommodation Information">
+					Ayers Rock</a>
+                    <a href="accommodation_info_darwin.htm" title="Darwin Accommodation Information">
+					Darwin</a>
+                    <a href="accommodation_info_kakadu.htm" title="Kakdu Accommodation Information">
+					Kakadu</a>
+                    <b>Australian Regions</b>
+                    <a href="australian_aboriginal_culture.htm" title="Aboriginal Culture Paradise Accommodation Information">
+					Aboriginal Culture</a>
+                    <a href="accommodation_info_farmstays.htm" title="Farmstays Accommodation Information">
+					Farmstays</a>
+                    <a href="accommodation_info_outback.htm" title="Outback Accommodation Information">
+					Outback</a>
+                    <a href="accommodation_info_rainforest.htm" title="Rainforests Accommodation Information">
+					Rainforests</a>
+                    <b>Theme Holidays</b>
+                    <a href="australian_golf_holidays.htm" title="Golf Holidays Accommodation Information">
+					Golf Holidays</a>
+                    <a href="australian_spa_holidays.htm" title="Spa Holidays Accommodation Information">
+					Spa Holidays</a>
+					<b>Live Web Cam</b>
+					<a href="Webcam_4_Mile_Beach_Port_Douglas.htm" title="Port Douglas Queensland Live Web Cam">
+					Port Douglas QLD</a>                                        
+                 </div>
+              </div>
+        </li>
+        <li><a href="#">Accommodation</a>
+            <div class="dropToLeft">
+                <div class="column">
+                	<b>New South Wales Accommodation</b>
+                    <a href="accommodation_blue_mountains_listing/accommodation_blue_mountains.htm" title="Blue Mountains Accommodation">
+					Blue Mountains</a>
+                    <a href="accommodation_hunter_valley_listing/accommodation_hunter_valley.htm" title="Hunter Valley Accommodation">
+					Hunter Valley</a>
+                    <a href="accommodation_sydney_listing/accommodation_sydney.htm" title="Sydney Accommodation">
+					Sydney</a>
+                    <a href="accommodation_byron_bay_listing/accommodation_byron_bay.htm" title="Byron Bay Accommodation">
+					Byron Bay</a>
+                    <a href="accommodation_coffs_harbour_listing/accommodation_coffs_harbour.htm" title="Coffs Harbour Accommodation">
+					Coffs Harbour</a>
+                    <b>ACT Accommodation</b>
+					<a href="accommodation_canberra_listing/accommodation_canberra.htm" title="Canberra Accommodation">
+					Canberra</a>
+                    <b>South Australia</b>
+					<a href="accommodation_adelaide_listing/accommodation_adelaide.htm" title="Adelaide Accommodation">
+					Adelaide</a>
+					<a href="accommodation_barossa_valley_listing/accommodation_barossa_valley.htm" title="Barossa Valley Accommodation">
+					Barossa Valley</a>
+                    <a href="accommodation_fleurieu_peninsula_listing/accommodation_fleurieu_peninsula.htm" title="Fleurieu Peninsula Accommodation">
+					Fleurieu Peninsula</a>
+                    <a href="accommodation_murray_river_listing/accommodation_murray_river.htm" title="Murray River Accommodation">
+					Murray River</a>
+                </div>
+                <div class="column" style="width:2px;text-align:center;">
+                    <img src="images/divider.gif" style="width:2px; height:338px;" />                 
+                </div>
+                <div class="column">
+                    <b>Victoria Accommodation</b>
+                    <a href="accommodation_melbourne_listing/accommodation_melbourne.htm" title="Melbourne Accommodation">
+					Melbourne</a>
+                    <a href="accommodation_great_ocean_road_listing/accommodation_great_ocean_road.htm" title="Great Ocean Road Accommodation">
+					Great Ocean Road</a>
+                    <b>Western Australia Accommodation</b>
+                    <a href="accommodation_broome_listing/accommodation_broome.htm" title="Broome Accommodation">
+					Broome</a>
+                    <a href="accommodation_fremantle_listing/accommodation_fremantle.htm" title="Fremantle Accommodation">
+					Fremantle</a>
+                    <a href="accommodation_kangaroo_island_listing/accommodation_kangaroo_island.htm" title="Kangaroo Island Accommodation">
+					Kangaroo Island</a>
+                    <a href="accommodation_margaret_river_listing/accommodation_margaret_river.htm" title="Margaret Riover Accommodation">
+					Margaret River</a>
+                    <a href="accommodation_ningaloo_reef_listing/accommodation_ningaloo_reef.htm" title="Ningaloo Reef Accommodation">
+					Ningaloo Reef</a>
+                    <a href="accommodation_perth_listing/accommodation_perth.htm" title="Perth Accommodation">
+					Perth</a>
+                    <a href="accommodation_kimberleys_listing/accommodation_kimberleys.htm" title="The Kimberley Accommodation">
+					The Kimberley</a>
+                    <b>Tasmania Accommodation</b>
+                    <a href="accommodation_hobart_listing/accommodation_hobart.htm" title="Hobart Accommodation">
+					Hobart</a>                                        
+                </div>
+                <div class="column" style="width:2px;text-align:center;">
+                    <img src="images/divider.gif" style="width:2px; height:338px;" />                 
+                </div>
+                <div class="column">
+                    <b>Queensland Accommodation</b>
+                    <a href="accommodation_airlie_beach_listing/accommodation_airlie_beach.htm" title="Airlie Beach Accommodation">
+					Airlie Beach</a>
+                    <a href="accommodation_atherton_tablelands_listing/accommodation_atherton_tablelands.htm" title="Atherton Tablelands Accommodation">
+					Atherton Tablelands</a>
+                    <a href="accommodation_brisbane_listing/accommodation_brisbane.htm" title="Brisbane Accommodation">
+					Brisbane</a>
+                    <a href="accommodation_broadbeach_listing/accommodation_broadbeach.htm" title="Broadbeach Accommodation">
+					Broadbeach</a>
+                    <a href="accommodation_bundaberg_listing/accommodation_bundaberg.htm" title="Bundaberg Accommodation">
+					Bundaberg</a>
+                    <a href="accommodation_burleigh_heads_listing/accommodation_burleigh_heads.htm" title="Burleigh Heads Accommodation">
+					Burleigh Heads</a>
+                    <a href="accommodation_cairns_listing/accommodation_cairns.htm" title="Cairns Accommodation">
+					Cairns</a>
+                    <a href="accommodation_cairns_northern_beaches_listing/accommodation_cairns_northern_beaches.htm" title="Cairns Northern Beaches Accommodation">
+					Cairns Beaches</a>
+                    <a href="accommodation_caloundra_listing/accommodation_caloundra.htm" title="Caloundra Accommodation">
+					Caloundra</a>
+                    <a href="accommodation_cape_tribulation_listing/accommodation_cape_tribulation.htm" title="Cape Tribulation Accommodation">
+					Cape Tribulation</a>
+                    <a href="accommodation_cape_york_listing/accommodation_cape_york.htm" title="Cape York Accommodation">
+					Cape York</a>
+                    <a href="accommodation_clifton_beach_listing/accommodation_clifton_beach.htm" title="Clifton Beach Accommodation">
+					Clifton Beach</a>
+                    <a href="accommodation_coolangatta_listing/accommodation_coolangatta.htm" title="Coolangatta Accommodation">
+					Coolangatta</a>
+                    <a href="accommodation_coolum_beach_listing/accommodation_coolum_beach.htm"title="Coolum Beach Accommodation">
+					Coolum Beach</a>
+                    <a href="accommodation_daintree_listing/accommodation_daintree.htm" title="Daintree Accommodation">
+					Daintree</a>
+                    <a href="accommodation_fraser_coast_listing/accommodation_fraser_coast.htm" title="Fraser Coast Accommodation">
+					Fraser Coast</a>
+                    <a href="accommodation_fraser_island_listing/accommodation_fraser_island.htm" title="Fraser Island Accommodation">
+					Fraser Island</a>
+                    <a href="accommodation_gold_coast_listing/accommodation_gold_coast.htm" title="Gold Coast Accommodation">
+					Gold Coast</a>                    
+                </div>
+                <div class="column" style="width:2px;text-align:center;">
+                    <img src="images/divider.gif" style="width:2px; height:338px;" />                 
+                </div>
+                <div class="column">
+                    <b>Queensland Accommodation</b>
+                    <a href="accommodation_hervey_bay_listing/accommodation_hervey_bay.htm" title="Hervey Bay Accommodation">
+					Hervey Bay</a>
+                    <a href="accommodation_mackay_listing/accommodation_mackay.htm" title="Mackay Accommodation">
+					Mackay</a>
+                    <a href="accommodation_magnetic_island_listing/accommodation_magnetic_island.htm" title="Magnetic Island Accommodation">
+					Magnetic Island</a>
+                    <a href="accommodation_main_beach_listing/accommodation_main_beach.htm" title="Main Beach Accommodation">
+					Main Beach</a>
+                    <a href="accommodation_maroochydore_listing/accommodation_maroochydore.htm" title="Maroochydore Accommodation">
+					Maroochydore</a>
+                    <a href="accommodation_mission_beach_listing/accommodation_mission_beach.htm" title="Mission Beach Accommodation">
+					Mission Beach</a>
+                    <a href="accommodation_mooloolaba_listing/accommodation_mooloolaba.htm" title="Mooloolaba Accommodation">
+					Mooloolaba</a>
+                    <a href="accommodation_noosa_listing/accommodation_noosa.htm" title="Noosa Accommodation">
+					Noosa</a>
+                    <a href="accommodation_oak_beach_listing/accommodation_oak_beach.htm" title="Oak Beach Accommodation">
+					Oak Beach</a>
+                    <a href="accommodation_palm_cove_listing/accommodation_palm_cove.htm" title="Palm Cove Accommodation">
+					Palm Cove</a>
+                    <a href="accommodation_port_douglas_listing/accommodation_port_douglas.htm" title="Port Douglas Accommodation">
+					Port Douglas</a>
+                    <a href="accommodation_sunshine_coast_listing/accommodation_sunshine_coast.htm" title="Sunshine Coast Accommodation">
+					Sunshine Coast</a>
+                    <a href="accommodation_surfers_paradise_listing/accommodation_surfers_paradise.htm" title="Surfers Paradise Accommodation">
+					Surfers Paradise</a>
+                    <a href="accommodation_townsville_listing/accommodation_townsville.htm" title="Townsville Accommodation">
+					Townsville</a>
+                    <a href="accommodation_trinity_beach_listing/accommodation_trinity_beach.htm" title="Trinity Beach Accommodation">
+					Trinity Beach</a>
+					<a href="accommodation_tropical_north_queensland_listing/accommodation_tropical_north_queensland.htm" title="Trinity Beach Accommodation">
+					Tropical North QLD</a>
+                    <a href="accommodation_yorkeys_knob_listing/accommodation_yorkeys_knob.htm" title="Yorkeys Knob Accommodation">
+					Yorkeys Knob</a>
+                    <a href="accommodation_whitsundays_listing/accommodation_whitsundays.htm" title="Whitsundays Accommodation">
+					Whitsundays</a>
+                </div>
+                <div class="column" style="width:2px;text-align:center;">
+                    <img src="images/divider.gif" style="width:2px; height:338px;" />                 
+                </div>
+                <div class="column">
+                    <b>Northern Territory Accommodation</b>
+                    <a href="accommodation_alice_springs_listing/accommodation_alice_springs.htm" title="Alice Springs Accommodation">
+					Alice Springs</a>
+                    <a href="accommodation_ayers_rock_listing/accommodation_ayers_rock.htm" title="Aners Rock Accommodation">
+					Ayers Rock</a>
+                    <a href="accommodation_darwin_listing/accommodation_darwin.htm" title="Darwin Accommodation">
+					Darwin</a>
+                    <a href="accommodation_kakadu_listing/accommodation_kakadu.htm" title="Kakadu Accommodation">
+					Kakadu</a>
+                    <b>Regions Accommodation</b>
+                    <a href="australian_aboriginal_culture.htm" title="Australia Aboriginal Culture">
+					Aboriginal Culture</a>
+                    <a href="accommodation_info_farmstays.htm" title="Australia Farmstays Accommodation">
+					Farmstays</a>
+                    <a href="accommodation_info_outback.htm" title="Australia Outback Accommodation">
+					Outback</a>
+                    <a href="accommodation_info_rainforest.htm" title="Australia Rainforests Accommodation">
+					Rainforests</a>
+                    <b>Theme Holidays Accommodation</b>
+                    <a href="australian_golf_holidays.htm" title="Australia Golf Holidays Accommodation">
+					Golf Holidays</a>
+                    <a href="australian_spa_holidays.htm" title="Australia Spa Holidays Accommodation">
+					Spa Holidays</a>
+					<b>Live Web Cam</b>
+					<a href="Webcam_4_Mile_Beach_Port_Douglas.htm" title="Port Douglas Queensland Live Web Cam">
+					Port Douglas QLD</a>
+                                        
+                 </div>
+              </div>
+        </li>
+        <li><font color="#FF9900">HOT DEALS</font>
+            <div>
+                <div class="column">
+                	<b>Accommodation <font color="#FF9900">HOT DEALS</font></b>
+                    <a href="accommodation_specials_new_south_wales.htm" title="New South Wales Accommodation Specials">
+					New South Wales</a>
+                    <a href="accommodation_specials_queensland.htm" title="Queensland Accommodation Specials">
+					Queensland</a>
+                    <a href="accommodation_specials_victoria.htm" title="Victoria Accommodation Specials">
+					Victoria</a>
+                    <a href="accommodation_specials_western_australia.htm" title="Western Australia Accommodation Specials">
+					Western Australia</a>
+                    <a href="accommodation_specials_south_australia.htm" title="South Australia Accommodation Specials">
+					South Australia</a>
+                    <a href="accommodation_specials_tasmania.htm" title="Tasmania Accommodation Specials">
+					Tasmania</a>
+                    <a href="accommodation_specials_australian_capital_territory.htm" title="Australian Capitol Territory Accommodation Specials">
+					ACT</a>
+                    <a href="accommodation_specials_northern_territory.htm" title="Northern Territory Accommodation Specials">
+					Northern Territory</a>
+                 </div>
+                 <div class="column" style="width:200px;text-align:center;">
+                    <img src="images/specials_small.jpg" style="width:200px; height:175px;" />
+                    Save $$ on Accommodation
+                </div>
+            </div>                  
+        </li>
+        <li>Golf Holidays
+            <div>
+                <div class="column">
+                	<b>Golf Holidays Accommodation</b>
+                	<a href="australian_golf_holidays.htm" title="Australia Golf Holidays Accommodation">
+					Why Golf Holidays?</a>
+                    <a href="golf_holiday_accommodation/accommodation_golf_holiday_new_south_wales.htm" title="New South Wales Golf Holidays Accommodation">
+					New South Wales</a>
+                    <a href="golf_holiday_accommodation/accommodation_golf_holiday_queensland.htm" title="Queensland Golf Holidays Accommodation">
+					Queensland</a>
+                    <a href="golf_holiday_accommodation/accommodation_golf_holiday_victoria.htm" title="Victoria Golf Holidays Accommodation">
+					Victoria</a>
+                    <a href="golf_holiday_accommodation/accommodation_golf_holiday_western_australia.htm" title="Western Australia Golf Holidays Accommodation">
+					Western Australia</a>
+                    <a href="golf_holiday_accommodation/accommodation_golf_holiday_south_australia.htm" title="South Australia Golf Holidays Accommodation">
+					South Australia</a>
+                    <a href="golf_holiday_accommodation/accommodation_golf_holiday_tasmania.htm" title="Tasmania Golf Holidays Accommodation">
+					Tasmania</a>
+                    <a href="golf_holiday_accommodation/accommodation_golf_holiday_australian_capital_territory.htm" title="Australian Capital Territory Golf Holidays Accommodation">
+					ACT</a>
+                    <a href="golf_holiday_accommodation/accommodation_golf_holiday_northern_territory.htm" title="Northern Territory Golf Holidays Accommodation">
+					Northern Territory</a>
+                 </div>
+                 <div class="column" style="width:200px;text-align:center;">
+                    <img src="images/golf_small.jpg" style="width:200px; height:175px;" />
+                    Championship Courses
+                </div>
+            </div>                  
+        </li>
+        <li>Spa Holidays
+            <div>
+                <div class="column">
+                	<b>Spa Holidays Accommodation</b>
+                	<a href="australian_spa_holidays.htm" title="Australia Spa Holidays Accommodation">
+					Why Spa Holidays?</a>
+                    <a href="spa_holiday_accommodation/accommodation_spa_holiday_new_south_wales.htm" title="New South Wales Spa Holidays Accommodation">
+					New South Wales</a>
+                    <a href="spa_holiday_accommodation/accommodation_spa_holiday_queensland.htm" title="Queensland Spa Holidays Accommodation">
+					Queensland</a>
+                    <a href="spa_holiday_accommodation/accommodation_spa_holiday_victoria.htm" title="Victoria Spa Holidays Accommodation">
+					Victoria</a>
+                    <a href="spa_holiday_accommodation/accommodation_spa_holiday_western_australia.htm" title="Western Australia Spa Holidays Accommodation">
+					Western Australia</a>
+                    <a href="spa_holiday_accommodation/accommodation_spa_holiday_south_australia.htm" title="South Australia Spa Holidays Accommodation">
+					South Australia</a>
+                    <a href="spa_holiday_accommodation/accommodation_spa_holiday_tasmania.htm" title="Tasmania Spa Holidays Accommodation">
+					Tasmania</a>
+                    <a href="spa_holiday_accommodation/accommodation_spa_holiday_australian_capital_territory.htm" title="Australian Capital Territory Spa Holidays Accommodation">
+					ACT</a>
+                    <a href="spa_holiday_accommodation/accommodation_spa_holiday_northern_territory.htm" title="Northern Territory Spa Holidays Accommodation">
+					Northern Territory</a>
+                 </div>
+                 <div class="column" style="width:200px;text-align:center;">
+                    <img src="images/spa_small.jpg" style="width:200px; height:175px;" />
+                    Relax, Rejuvenate
+                </div>
+            </div>                  
+        </li>
+        <li>Events
+            <div>
+                <div class="column">
+                	<b>Australian Events</b>
+                	<a href="australian_events.htm" title="Australia Events Festivals">
+					What's On</a>
+                	<a href="accommodation_events_new_south_wales.htm" title="Accommodation Events New South Wales">
+					New South Wales</a>
+                    <a href="accommodation_events_queensland.htm" title="Accommodation Events New South Wales">
+					Queensland</a>
+                    <a href="accommodation_events_victoria.htm" title="Accommodation Events New South Wales">
+					Victoria</a>
+                    <a href="accommodation_events_western_australia.htm" title="Accommodation Events New South Wales">
+					Western Australia</a>
+                    <a href="accommodation_events_south_australia.htm" title="Accommodation Events New South Wales">
+					South Australia</a>
+                    <a href="accommodation_events_tasmania.htm" title="Accommodation Events New South Wales">
+					Tasmania</a>
+                    <a href="accommodation_events_australian_capital_territory.htm" title="Accommodation Events New South Wales">
+					ACT</a>
+                    <a href="accommodation_events_northern_territory.htm" title="Accommodation Events New South Wales">
+					Northern Territory</a>                    
+                 </div>
+                 <div class="column" style="width:200px;text-align:center;">
+                    <img src="images/events_small.jpg" style="width:200px; height:175px;" />
+                    World Class Events
+                </div>
+            </div>                  
+        </li>
+        
+        <li><a href="australian_aboriginal_culture.htm" title="Aboriginal Culture Australia">
+		Aboriginal Culture</a></li>
+        
+        <li>Travellers Info
+            <div class="topLeft2">
+                <div class="column">
+                	<b>Useful Information</b>
+                	<a href="travel_tips_australia.htm" title="Australia Travel Tips">
+					Travellers Info</a>
+                	<a href="Australian_Holiday_FAQs.htm" title="Australia Holiday FAQs">
+					FAQs</a>
+                    <a href="australian_useful_links.htm" title="Australia Useful Links">
+					Resource Links</a>
+                                        
+                 </div>               
+            </div>                  
+        </li>
+        
+        
+             
+    </ul>
+</nav></td>
+						<td width="25">&nbsp;</td>
+					</tr>
+				</table>
+				<table border="0" width="1050" cellspacing="0" cellpadding="0" height="25">
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+			</div>
+	</td>
+	</tr>
+	</table>		
+	<table border="0" width="1050" cellspacing="0" cellpadding="0" height="55">
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
